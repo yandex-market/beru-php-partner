@@ -32,6 +32,15 @@ class Client extends AbstractServiceClient
     private $clientId;
 
     /**
+     * Headers for API
+     *
+     * @var array
+     */
+    private $headers = [
+        'Yandex-Market-Php-Version' => 'yandex.market php library 1.1.0'
+    ];
+
+    /**
      * @param string $token access token
      */
     public function __construct($clientId = '', $token = '')
@@ -134,7 +143,7 @@ class Client extends AbstractServiceClient
     protected function sendRequest($method, $uri, array $options = [])
     {
         try {
-            $response = $this->getClient()->request($method, $uri, $options);
+            $response = $this->getClient($this->headers)->request($method, $uri, $options);
         } catch (ClientException $ex) {
             $result = $ex->getResponse();
 

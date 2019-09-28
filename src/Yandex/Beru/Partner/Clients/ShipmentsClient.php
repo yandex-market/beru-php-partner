@@ -66,7 +66,7 @@ class ShipmentsClient extends Client
      * @param $campaignId
      * @param $requestId
      * @param array $params
-     * @return \Yandex\Beru\Partner\Models\ShipmentRequestDetails
+     * @return GetShipmentResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Yandex\Beru\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
@@ -78,9 +78,8 @@ class ShipmentsClient extends Client
         $resource .= '?' . $this->buildQueryString($params);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
-        $GetShipmentResponse = new GetShipmentResponse($decodedResponseBody);
 
-        return $GetShipmentResponse->getShipmentRequest();
+        return new GetShipmentResponse($decodedResponseBody);
     }
 
     /**

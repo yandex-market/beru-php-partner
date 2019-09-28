@@ -45,7 +45,7 @@ class ShipmentItem extends ObjectModel
     }
 
     /**
-     * @return mixed
+     * @return string[]|null
      */
     public function getBarcodes()
     {
@@ -117,7 +117,7 @@ class ShipmentItem extends ObjectModel
     }
 
     /**
-     * @return array
+     * @return string[]|null
      */
     public function getErrors()
     {

@@ -2,27 +2,42 @@
 
 namespace Yandex\Beru\Partner\Models\Response;
 
-use Yandex\Beru\Partner\Models\ShipmentRequest;
+use Yandex\Beru\Partner\Models\Common\Errors;
+use Yandex\Beru\Partner\Models\ShipmentsResult;
 use Yandex\Common\Model;
 
 class ShipmentsResponse extends Model
 {
-    protected $shipmentRequest;
-
-    public function __construct(array $data = [])
-    {
-        parent::__construct($data['result']);
-    }
+    protected $errors;
+    protected $result;
+    protected $status;
 
     protected $mappingClasses = [
-        'shipmentRequest' => ShipmentRequest::class,
+        'errors' => Errors::class,
+        'result' => ShipmentsResult::class,
     ];
 
     /**
-     * @return ShipmentRequest
+     * @return Errors|null
      */
-    public function getShipmentRequest()
+    public function getErrors()
     {
-        return $this->shipmentRequest;
+        return $this->errors;
+    }
+
+    /**
+     * @return ShipmentsResult
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

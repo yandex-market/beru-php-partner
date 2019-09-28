@@ -123,7 +123,7 @@ class ShipmentRequestDetails extends Model
     }
 
     /**
-     * @return StatusHistoryRow
+     * @return StatusHistory
      */
     public function getStatusHistory()
     {

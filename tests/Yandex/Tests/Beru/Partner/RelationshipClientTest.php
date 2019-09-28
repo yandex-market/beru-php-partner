@@ -26,8 +26,9 @@ class RelationshipClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
-        $offers = $mock->getRecommendedRelationship(self::CAMPAIGN_ID);
-
+        $offersResp = $mock->getRecommendedRelationship(self::CAMPAIGN_ID);
+        $offersResult =  $offersResp->getResult();
+        $offers = $offersResult->getOffers();
         $offer = $offers->current();
 
 
@@ -115,12 +116,12 @@ class RelationshipClientTest extends TestCase
             ->will($this->returnValue($response));
 
         $relationshipResponse = $mock->getActiveRelationship(self::CAMPAIGN_ID);
-
-        $offers = $relationshipResponse->getOfferMappingEntries();
+        $getResult = $relationshipResponse->getResult();
+        $offers = $getResult->getOfferMappingEntries();
 
         $offerMappingEntries = $offers->current();
 
-        $paging = $relationshipResponse->getNextPageToken();
+        $paging = $getResult->getNextPageToken();
         $this->assertEquals($jsonObj->result->paging->nextPageToken, $paging);
 
         for ($i = 0; $i < $offers->count(); $i++) {

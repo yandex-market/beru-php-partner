@@ -62,7 +62,7 @@ class ActiveRelationOffer extends ObjectModel
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getManufacturerCountries()
     {
@@ -70,7 +70,7 @@ class ActiveRelationOffer extends ObjectModel
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getUrls()
     {
@@ -94,7 +94,7 @@ class ActiveRelationOffer extends ObjectModel
     }
 
     /**
-     * @return array
+     * @return string[]|null
      */
     public function getBarcodes()
     {
@@ -150,7 +150,7 @@ class ActiveRelationOffer extends ObjectModel
     }
 
     /**
-     * @return array
+     * @return string[]|null
      */
     public function getSupplyScheduleDays()
     {

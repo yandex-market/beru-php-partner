@@ -2,40 +2,42 @@
 
 namespace Yandex\Beru\Partner\Models\Response;
 
-use Yandex\Beru\Partner\Models\ActiveRelationship;
+use Yandex\Beru\Partner\Models\ActiveRelationshipResult;
+use Yandex\Beru\Partner\Models\Common\Errors;
 use Yandex\Common\Model;
 
 class GetActiveRelationshipResponse extends Model
 {
-    protected $offerMappingEntries;
-    protected $paging;
+    protected $errors;
+    protected $result;
+    protected $status;
 
     protected $mappingClasses = [
-        'offerMappingEntries' => ActiveRelationship::class,
+        'errors' => Errors::class,
+        'result' => ActiveRelationshipResult::class,
     ];
 
-    public function __construct(array $data = [])
+    /**
+     * @return Errors|null
+     */
+    public function getErrors()
     {
-        parent::__construct($data['result']);
+        return $this->errors;
     }
 
     /**
-     * @return ActiveRelationship
+     * @return ActiveRelationshipResult
      */
-    public function getOfferMappingEntries()
+    public function getResult()
     {
-        return $this->offerMappingEntries;
+        return $this->result;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getNextPageToken()
+    public function getStatus()
     {
-        if (isset($this->paging['nextPageToken'])) {
-            return $this->paging['nextPageToken'];
-        }
-
-        return null;
+        return $this->status;
     }
 }

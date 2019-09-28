@@ -61,7 +61,7 @@ class RecommendedRelation extends Model
     }
 
     /**
-     * @return array
+     * @return string|null
      */
     public function getBarcodes()
     {

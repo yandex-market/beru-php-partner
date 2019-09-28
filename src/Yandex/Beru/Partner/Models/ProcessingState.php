@@ -22,7 +22,7 @@ class ProcessingState extends ObjectModel
     }
 
     /**
-     * @return Notes
+     * @return  Notes|null
      */
     public function getNotes()
     {

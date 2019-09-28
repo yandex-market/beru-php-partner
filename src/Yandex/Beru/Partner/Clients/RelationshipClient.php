@@ -15,7 +15,7 @@ class RelationshipClient extends Client
      *
      * @param $campaignId
      * @param array $params
-     * @return \Yandex\Beru\Partner\Models\RecommendedRelationship
+     * @return GetRecommendedRelationshipResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Yandex\Beru\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
@@ -32,7 +32,7 @@ class RelationshipClient extends Client
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
         $getRecommendedRelationshipResponse = new GetRecommendedRelationshipResponse($decodedResponseBody);
 
-        return $getRecommendedRelationshipResponse->getOffers();
+        return $getRecommendedRelationshipResponse;
     }
 
     /**

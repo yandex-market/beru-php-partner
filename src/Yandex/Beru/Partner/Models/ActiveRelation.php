@@ -27,7 +27,7 @@ class ActiveRelation extends ObjectModel
     }
 
     /**
-     * @return Mapping
+     * @return Mapping|null
      */
     public function getMapping()
     {
@@ -35,7 +35,7 @@ class ActiveRelation extends ObjectModel
     }
 
     /**
-     * @return AwaitingModerationMapping
+     * @return AwaitingModerationMapping|null
      */
     public function getAwaitingModerationMapping()
     {
@@ -43,7 +43,7 @@ class ActiveRelation extends ObjectModel
     }
 
     /**
-     * @return RejectedMapping
+     * @return RejectedMapping|null
      */
     public function getRejectedMapping()
     {

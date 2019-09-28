@@ -31,7 +31,7 @@ class PriceSuggestion extends Model
     }
 
     /**
-     * @return Period
+     * @return Period|null
      */
     public function getPeriod()
     {

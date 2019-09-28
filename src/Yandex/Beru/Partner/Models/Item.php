@@ -26,6 +26,9 @@ class Item extends Model
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function getOfferId()
     {
         return $this->offerId;

@@ -7,61 +7,24 @@ use Yandex\Common\Model;
 class Shipment extends Model
 {
     protected $id;
-    protected $weight;
-    protected $width;
-    protected $height;
-    protected $depth;
-    protected $items;
+    protected $boxes;
 
     protected $mappingClasses = [
-        'items' => Items::class,
+        'boxes' => Boxes::class
     ];
 
+    /**
+     * @return Boxes
+     */
+    public function getBoxes()
+    {
+        return $this->boxes;
+    }
     /**
      * @return int
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWidth()
-    {
-        return $this->width;
-    }
-
-    /**
-     * @return int
-     */
-    public function getHeight()
-    {
-        return $this->height;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDepth()
-    {
-        return $this->depth;
-    }
-
-    /**
-     * @return Items
-     */
-    public function getItems()
-    {
-        return $this->items;
     }
 }

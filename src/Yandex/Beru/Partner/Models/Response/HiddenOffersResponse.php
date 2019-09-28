@@ -2,43 +2,42 @@
 
 namespace Yandex\Beru\Partner\Models\Response;
 
+use Yandex\Beru\Partner\Models\Common\Errors;
+use Yandex\Beru\Partner\Models\HiddenOffersResult;
 use Yandex\Common\Model;
-use Yandex\Beru\Partner\Models\HiddenOffers;
 
 class HiddenOffersResponse extends Model
 {
-    protected $total;
-    protected $paging;
-    protected $hiddenOffers;
+    protected $errors;
+    protected $result;
+    protected $status;
 
     protected $mappingClasses = [
-        'hiddenOffers' => HiddenOffers::class
+        'errors' => Errors::class,
+        'result' => HiddenOffersResult::class,
     ];
 
     /**
-     * @return mixed
+     * @return Errors|null
      */
-    public function getTotal()
+    public function getErrors()
     {
-        return $this->total;
+        return $this->errors;
     }
 
     /**
-     * @return mixed
+     * @return HiddenOffersResult
      */
-    public function getNextPageToken()
+    public function getResult()
     {
-        if (isset($this->paging['nextPageToken'])) {
-            return $this->paging['nextPageToken'];
-        }
-        return null;
+        return $this->result;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getHiddenOffers()
+    public function getStatus()
     {
-        return $this->hiddenOffers;
+        return $this->status;
     }
 }

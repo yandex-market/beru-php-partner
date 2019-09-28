@@ -27,7 +27,7 @@ class HiddenOffersClient extends Client
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 
-        return new HiddenOffersResponse($decodedResponseBody['result']);
+        return new HiddenOffersResponse($decodedResponseBody);
     }
 
     /**

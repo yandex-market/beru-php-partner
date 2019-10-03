@@ -26,8 +26,9 @@ class PriceClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
-        $offers = $mock->getRecommendedPrices(self::CAMPAIGN_ID);
-
+        $offersResp = $mock->getRecommendedPrices(self::CAMPAIGN_ID);
+        $offersResult = $offersResp->getResult();
+        $offers = $offersResult->getOffers();
         $offer = $offers->current();
 
         for ($i = 0; $i < $offers->count(); $i++) {
@@ -119,8 +120,8 @@ class PriceClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
-        $priceResponse = $mock->getOffersPrices(self::CAMPAIGN_ID);
-
+        $priceResult = $mock->getOffersPrices(self::CAMPAIGN_ID);
+        $priceResponse = $priceResult->getResult();
         $total = $priceResponse->getTotal();
         $this->assertEquals($jsonObj->result->total, $total);
 

@@ -2,39 +2,42 @@
 
 namespace Yandex\Beru\Partner\Models\Response;
 
-use Yandex\Beru\Partner\Models\Requests;
+use Yandex\Beru\Partner\Models\Common\Errors;
+use Yandex\Beru\Partner\Models\GetShipmentsResult;
 use Yandex\Common\Model;
 
 class GetShipmentsResponse extends Model
 {
-    protected $requests;
-    protected $paging;
-
-    public function __construct(array $data = [])
-    {
-        parent::__construct($data['result']);
-    }
+    protected $errors;
+    protected $result;
+    protected $status;
 
     protected $mappingClasses = [
-        'requests' => Requests::class,
+        'errors' => Errors::class,
+        'result' => GetShipmentsResult::class,
     ];
 
     /**
-     * @return Requests
+     * @return Errors|null
      */
-    public function getRequests()
+    public function getErrors()
     {
-        return $this->requests;
+        return $this->errors;
     }
 
     /**
-     * @return mixed
+     * @return GetShipmentsResult
      */
-    public function getNextPageToken()
+    public function getResult()
     {
-        if (isset($this->paging['nextPageToken'])) {
-            return $this->paging['nextPageToken'];
-        }
-        return null;
+        return $this->result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

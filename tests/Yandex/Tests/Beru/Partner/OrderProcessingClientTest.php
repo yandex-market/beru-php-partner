@@ -166,35 +166,45 @@ class OrderProcessingClientTest extends TestCase
                 $jsonObj->order->delivery->shipments[$i]->id,
                 $shipment->getId()
             );
-            $this->assertEquals(
-                $jsonObj->order->delivery->shipments[$i]->depth,
-                $shipment->getDepth()
-            );
-            $this->assertEquals(
-                $jsonObj->order->delivery->shipments[$i]->height,
-                $shipment->getHeight()
-            );
-            $this->assertEquals(
-                $jsonObj->order->delivery->shipments[$i]->weight,
-                $shipment->getWeight()
-            );
-            $this->assertEquals(
-                $jsonObj->order->delivery->shipments[$i]->width,
-                $shipment->getWidth()
-            );
-            $items = $shipment->getItems();
-            $item = $items->current();
-            for ($y = 0; $y < $items->count(); $y++) {
+            $boxes = $shipment->getBoxes();
+            $box = $boxes->current();
+            for ($j = 0; $j < $boxes->count(); $j++) {
                 $this->assertEquals(
-                    $jsonObj->order->delivery->shipments[$i]->items[$y]->count,
-                    $item->getCount()
+                    $jsonObj->order->delivery->shipments[$i]->boxes[$j]->depth,
+                    $box->getDepth()
+                );
+
+                $this->assertEquals(
+                    $jsonObj->order->delivery->shipments[$i]->boxes[$j]->height,
+                    $box->getHeight()
                 );
                 $this->assertEquals(
-                    $jsonObj->order->delivery->shipments[$i]->items[$y]->id,
-                    $item->getId()
+                    $jsonObj->order->delivery->shipments[$i]->boxes[$j]->weight,
+                    $box->getWeight()
                 );
-                $item = $items->next();
+                $this->assertEquals(
+                    $jsonObj->order->delivery->shipments[$i]->boxes[$j]->width,
+                    $box->getWidth()
+                );
+
+
+                $items = $box->getItems();
+                $item = $items->current();
+                for ($y = 0; $y < $items->count(); $y++) {
+                    $this->assertEquals(
+                        $jsonObj->order->delivery->shipments[$i]->boxes[$j]->items[$y]->count,
+                        $item->getCount()
+                    );
+                    $this->assertEquals(
+                        $jsonObj->order->delivery->shipments[$i]->boxes[$j]->items[$y]->id,
+                        $item->getId()
+                    );
+                    $item = $items->next();
+                }
+                $box = $boxes->next();
             }
+
+
 
             $shipment = $shipments->next();
         }
@@ -344,8 +354,8 @@ class OrderProcessingClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
-        $boxes = $mock->putInfoOrderBoxes(self::CAMPAIGN_ID, self::ORDER_ID, self::SHIPMENT_ID);
-
+        $boxesResp = $mock->putInfoOrderBoxes(self::CAMPAIGN_ID, self::ORDER_ID, self::SHIPMENT_ID);
+        $boxes = $boxesResp->getBoxes();
         $box = $boxes->current();
 
         for ($i = 0; $i < $boxes->count(); $i++) {

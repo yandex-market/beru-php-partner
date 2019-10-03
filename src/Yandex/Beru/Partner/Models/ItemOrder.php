@@ -62,7 +62,7 @@ class ItemOrder extends Model
     }
 
     /**
-     * @return Promos
+     * @return Promos|null
      */
     public function getPromos()
     {

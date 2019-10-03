@@ -18,7 +18,7 @@ class StocksResponse extends Model
     }
 
     /**
-     * @return string
+     * @return string[]
      */
     public function getSkus()
     {

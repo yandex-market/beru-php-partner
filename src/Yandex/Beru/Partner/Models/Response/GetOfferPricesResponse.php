@@ -2,48 +2,42 @@
 
 namespace Yandex\Beru\Partner\Models\Response;
 
+use Yandex\Beru\Partner\Models\Common\Errors;
+use Yandex\Beru\Partner\Models\OfferPricesResult;
 use Yandex\Common\Model;
-use Yandex\Beru\Partner\Models\OfferPrices;
 
 class GetOfferPricesResponse extends Model
 {
-    protected $total;
-    protected $offers;
-    protected $paging;
+    protected $errors;
+    protected $result;
+    protected $status;
 
     protected $mappingClasses = [
-        'offers' => OfferPrices::class,
+        'errors' => Errors::class,
+        'result' => OfferPricesResult::class,
     ];
 
-    public function __construct(array $data = [])
+    /**
+     * @return Errors|null
+     */
+    public function getErrors()
     {
-        parent::__construct($data['result']);
+        return $this->errors;
     }
 
     /**
-     * @return OfferPrices
+     * @return OfferPricesResult
      */
-    public function getOffers()
+    public function getResult()
     {
-        return $this->offers;
+        return $this->result;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getTotal()
+    public function getStatus()
     {
-        return $this->total;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNextPageToken()
-    {
-        if (isset($this->paging['nextPageToken'])) {
-            return $this->paging['nextPageToken'];
-        }
-        return null;
+        return $this->status;
     }
 }

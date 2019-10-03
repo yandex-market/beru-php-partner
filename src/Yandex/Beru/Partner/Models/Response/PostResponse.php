@@ -16,7 +16,7 @@ class PostResponse extends Model
     ];
 
     /**
-     * @return Errors
+     * @return Errors|null
      */
     public function getErrors()
     {
@@ -32,7 +32,7 @@ class PostResponse extends Model
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function getResult()
     {

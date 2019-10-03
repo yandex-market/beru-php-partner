@@ -6,22 +6,36 @@ use Yandex\Common\ObjectModel;
 
 class Notes extends ObjectModel
 {
-    protected $type;
-    protected $payload;
-
     /**
-     * @return string
+     * @param array|object $note
+     *
+     * @return Notes
      */
-    public function getType()
+    public function add($note)
     {
-        return $this->type;
+        if (is_array($note)) {
+            $this->collection[] = new Note($note);
+        } elseif (is_object($note) && $note instanceof Note) {
+            $this->collection[] = $note;
+        }
+        return $this;
     }
 
     /**
-     * @return string
+     * Get items
+     *
+     * @return Note[]
      */
-    public function getPayload()
+    public function getAll()
     {
-        return $this->payload;
+        return $this->collection;
+    }
+
+    /**
+     * @return Note
+     */
+    public function current()
+    {
+        return parent::current();
     }
 }

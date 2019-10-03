@@ -40,7 +40,7 @@ class Region extends Model
     }
 
     /**
-     * @return ParentRegion
+     * @return ParentRegion|null
      */
     public function getParent()
     {

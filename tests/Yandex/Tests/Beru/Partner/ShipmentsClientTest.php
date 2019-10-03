@@ -28,7 +28,8 @@ class ShipmentsClientTest extends TestCase
             ->will($this->returnValue($response));
 
         $shipmentResponse = $mock->createShipment(self::CAMPAIGN_ID);
-        $result = $shipmentResponse->getShipmentRequest();
+        $resultShipment = $shipmentResponse->getResult();
+        $result = $resultShipment->getShipmentRequest();
 
         $this->assertEquals($jsonObj->result->shipmentRequest->id, $result->getId());
         $this->assertEquals($jsonObj->result->shipmentRequest->type, $result->getType());
@@ -55,8 +56,10 @@ class ShipmentsClientTest extends TestCase
             ->will($this->returnValue($response));
 
         $shipmentResponse = $mock->getShipments(self::CAMPAIGN_ID);
-        $paging = $shipmentResponse->getNextPageToken();
-        $requests = $shipmentResponse->getRequests();
+        $result = $shipmentResponse->getResult();
+
+        $paging = $result->getNextPageToken();
+        $requests = $result->getRequests();
         $request = $requests->current();
 
         $this->assertEquals($jsonObj->result->paging->nextPageToken, $paging);
@@ -89,7 +92,9 @@ class ShipmentsClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
-        $result = $mock->getShipment(self::CAMPAIGN_ID, self::REQUEST_ID);
+        $response = $mock->getShipment(self::CAMPAIGN_ID, self::REQUEST_ID);
+        $result = $response->getResult();
+        $result = $result->getShipmentRequest();
 
         $this->assertEquals($jsonObj->result->shipmentRequest->id, $result->getId());
         $this->assertEquals($jsonObj->result->shipmentRequest->type, $result->getType());
@@ -146,7 +151,8 @@ class ShipmentsClientTest extends TestCase
             ->will($this->returnValue($response));
 
         $shipmentResponse = $mock->getShipmentItems(self::CAMPAIGN_ID, self::REQUEST_ID);
-        $result = $shipmentResponse->getShipmentItems();
+        $getResult = $shipmentResponse->getResult();
+        $result = $getResult->getShipmentItems();
         $shipmentItems = $result->current();
 
         for ($i = 0; $i < $result->count(); $i++) {

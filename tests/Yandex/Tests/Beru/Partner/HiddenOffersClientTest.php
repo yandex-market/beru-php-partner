@@ -25,7 +25,8 @@ class HiddenOffersClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
-        $offersResp = $mock->getInfo(self::CAMPAIGN_ID);
+        $offersResult = $mock->getInfo(self::CAMPAIGN_ID);
+        $offersResp = $offersResult->getResult();
 
         $nextPageToken = $offersResp->getNextPageToken();
         $total = $offersResp->getTotal();

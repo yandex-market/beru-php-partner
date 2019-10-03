@@ -60,7 +60,7 @@ class Delivery extends Model
     }
 
     /**
-     * @return Shipments
+     * @return Shipments|null
      */
     public function getShipments()
     {

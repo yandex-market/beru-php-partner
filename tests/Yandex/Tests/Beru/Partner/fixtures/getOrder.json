@@ -11,6 +11,7 @@
     "status": "PROCESSING",
     "taxSystem": "OSN",
     "total": 4050,
+    "subsidyTotal": 300,
     "delivery":
     {
       "deliveryPartnerType": "YANDEX_MARKET",
@@ -44,19 +45,25 @@
       [
         {
           "id": 90141,
-          "depth": 22,
-          "height": 22,
-          "weight": 2000,
-          "width": 22,
-          "items":
+          "boxes":
           [
             {
-              "count": 3,
-              "id": 6789
-            },
-            {
-              "count": 1,
-              "id": 1011
+              "id": 67891011,
+              "depth": 22,
+              "height": 22,
+              "weight": 2000,
+              "width": 22,
+              "items":
+              [
+                {
+                  "count": 3,
+                  "id": 6789
+                },
+                {
+                  "count": 1,
+                  "id": 1011
+                }
+              ]
             }
           ]
         }
@@ -66,22 +73,15 @@
     [
       {
         "id": 6789,
-        "offerId": 100423035876,
+        "offerId": "100423035876",
         "count": 3,
         "price": 1200,
-        "vat": "VAT_20",
-        "promos":
-        [
-          {
-            "marketPromoId": "abc",
-            "subsidy": 300,
-            "type": "MARKET_DEAL"
-          }
-        ]
+        "subsidy": 300,
+        "vat": "VAT_20"
       },
       {
         "id": 1011,
-        "offerId": 100556386844,
+        "offerId": "100556386844",
         "count": 1,
         "price": 2200,
         "vat": "VAT_20"

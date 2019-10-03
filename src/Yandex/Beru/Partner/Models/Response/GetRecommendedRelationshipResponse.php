@@ -2,27 +2,42 @@
 
 namespace Yandex\Beru\Partner\Models\Response;
 
+use Yandex\Beru\Partner\Models\Common\Errors;
+use Yandex\Beru\Partner\Models\RecommendedRelationshipResult;
 use Yandex\Common\Model;
-use Yandex\Beru\Partner\Models\RecommendedRelationship;
 
 class GetRecommendedRelationshipResponse extends Model
 {
-    protected $offers;
+    protected $errors;
+    protected $result;
+    protected $status;
 
     protected $mappingClasses = [
-        'offers' => RecommendedRelationship::class,
+        'errors' => Errors::class,
+        'result' => RecommendedRelationshipResult::class,
     ];
 
-    public function __construct(array $data = [])
+    /**
+     * @return Errors|null
+     */
+    public function getErrors()
     {
-        parent::__construct($data['result']);
+        return $this->errors;
     }
 
     /**
-     * @return RecommendedRelationship
+     * @return RecommendedRelationshipResult
      */
-    public function getOffers()
+    public function getResult()
     {
-        return $this->offers;
+        return $this->result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

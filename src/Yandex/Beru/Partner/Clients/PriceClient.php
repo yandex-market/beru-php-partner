@@ -15,7 +15,7 @@ class PriceClient extends Client
      *
      * @param $campaignId
      * @param array $params
-     * @return \Yandex\Beru\Partner\Models\RecommendedPrices
+     * @return GetRecommendedPricesResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Yandex\Beru\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
@@ -32,7 +32,7 @@ class PriceClient extends Client
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
         $getRecommendedPricesResponse = new GetRecommendedPricesResponse($decodedResponseBody);
 
-        return $getRecommendedPricesResponse->getOffers();
+        return $getRecommendedPricesResponse;
     }
 
     /**

@@ -48,7 +48,7 @@ class OrderProcessingClient extends Client
      * @param $orderId
      * @param $shipmentId
      * @param array $params
-     * @return \Yandex\Beru\Partner\Models\OrderBoxes
+     * @return GetInfoOrderBoxesResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Yandex\Beru\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
@@ -66,7 +66,7 @@ class OrderProcessingClient extends Client
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
         $getInfoOrderBoxesResponse = new GetInfoOrderBoxesResponse($decodedResponseBody);
 
-        return $getInfoOrderBoxesResponse->getBoxes();
+        return $getInfoOrderBoxesResponse;
     }
 
     /**

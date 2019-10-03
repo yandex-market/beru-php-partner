@@ -64,7 +64,8 @@ $token = '01234567-89ab-cdef-fedc-ba9876543210';
 $hiddenOffersClient = new \Yandex\Beru\Partner\Clients\HiddenOffersClient($clientId, $token);
 // Получаем список скрытых товаров магазина
 $campaignId = 125874;
-$getInfo = $hiddenOffersClient->getInfo($campaignId);
+$offersResponse = $hiddenOffersClient->getInfo($campaignId);
+$getInfo = $offersResponse->getResult();
 // Получаем общее количество скрытых товаров магазина
 $total = $getInfo->getTotal();
 //Получаем идентификатор следующей страницы результатов
@@ -116,7 +117,7 @@ $showOffers = $hiddenOffersClient->showOffers($campaignId, ["hiddenOffers" => [
 $priceClient = new \Yandex\Beru\Partner\Clients\PriceClient($clientId, $token);
 $campaignId = 125874;
 // Получаем список товаров с рекомендованными ценами
-$offers = $priceClient->getRecommendedPrices($campaignId, [ "offers" =>
+$offersResp = $priceClient->getRecommendedPrices($campaignId, [ "offers" =>
     // Передаем список товаров, для которых хотим получить рекомендованную цену 
     [
         [
@@ -127,6 +128,8 @@ $offers = $priceClient->getRecommendedPrices($campaignId, [ "offers" =>
         ],
     ]
 ]);
+$offersResult = $offersResp->getResult();
+$offers = $offersResult->getOffers();
 // Получаем информацию о первом товаре
 $offer = $offers->current();
 foreach ($offers as $offer) {
@@ -177,7 +180,8 @@ $deletePrices = $priceClient->deletePrices($campaignId);
 $priceClient = new \Yandex\Beru\Partner\Clients\PriceClient($clientId, $token);
 $campaignId = 125874;
 // Получаем список цен на товары, установленных через партнерский API 
-$getOffersPrices = $priceClient->getOffersPrices($campaignId);
+$priceResult = $priceClient->getOffersPrices($campaignId);
+$getOffersPrices = $priceResult->getResult();
 // Получаем количество всех цен магазина, измененных через API.
 $total = $getOffersPrices->getTotal();
 // Получаем идентификатор следующей страницы результатов
@@ -205,7 +209,7 @@ foreach ($offers as $offer) {
 $relationshipClient = new \Yandex\Beru\Partner\Clients\RelationshipClient($clientId, $token);
 $campaignId = 125874;
 // Получаем рекомендованные связи между товарами на маркетплейсе Беру и товарами из вашего каталога
-$offers = $relationshipClient->getRecommendedRelationship($campaignId, [ "offers" =>
+$offersResp = $relationshipClient->getRecommendedRelationship($campaignId, [ "offers" =>
     [
         [
             "shopSku" => 110211,
@@ -215,6 +219,8 @@ $offers = $relationshipClient->getRecommendedRelationship($campaignId, [ "offers
         ],
     ],
 ]);
+$offersResult =  $offersResp->getResult();
+$offers = $offersResult->getOffers();
 // Выводим информацию о списке товаров
 foreach ($offers as $offer) {
     echo "Category: " . $offer->getCategory();
@@ -290,7 +296,8 @@ $deleteRelationship = $relationshipClient->deleteRelationship($campaignId, [
 $relationshipClient = new \Yandex\Beru\Partner\Clients\RelationshipClient($clientId, $token);
 $campaignId = 125874;
 // Получаем список связей между товарами на маркетплейсе Беру и товарами из вашего каталога
-$getActiveRelationship = $relationshipClient->getActiveRelationship($campaignId);
+$relationshipResponse = $relationshipClient->getActiveRelationship($campaignId);
+$getActiveRelationship = $relationshipResponse->getResult();
 // Получаем информацию о связях товаров из каталога с товарами на Беру
 $offersMappingEntries = $getActiveRelationship->getOfferMappingEntries();
 // Получаем идентификатор следующей страницы результатов
@@ -447,7 +454,7 @@ $campaignId = 125874;
 $orderid = 8030217;
 $shipmentId = 5057435;
 // Получаем список коробок
-$boxes = $orderProcessingClient->putInfoOrderBoxes($campaignId, $orderid, $shipmentId, ["boxes" => [
+$boxesResp = $orderProcessingClient->putInfoOrderBoxes($campaignId, $orderid, $shipmentId, ["boxes" => [
         [
             'fulfilmentId' => '8152422-1',
             'weight' => 1000,
@@ -464,6 +471,7 @@ $boxes = $orderProcessingClient->putInfoOrderBoxes($campaignId, $orderid, $shipm
     ],
 
 ]);
+ $boxes = $boxesResp->getBoxes();
 // Информация о коробке
 foreach ($boxes as $box) {
     echo "Id: " . $box->getId();
@@ -619,7 +627,8 @@ $shipmentRequest = $shipment->getShipmentRequest();
 $shipmentsClient = new \Yandex\Beru\Partner\Clients\ShipmentsClient($clientId, $token);
 $campaignId = 125874;
 // Получаем информацию о поставках товаров
-$shipments = $shipmentsClient->getShipments($campaignId);
+$shipmentResponse = $shipmentsClient->getShipments($campaignId);
+$shipments = $shipmentResponse->getResult();
 // Получаем список поставок
 $requests = $shipments->getRequests();
 // Получаем первую поставку
@@ -641,7 +650,10 @@ $shipmentsClient = new \Yandex\Beru\Partner\Clients\ShipmentsClient($clientId, $
 // Получаем информацию о поставке товаров
 $campaignId = 125874;
 $requestId = 45119;
-$shipment = $shipmentsClient->getShipment($campaignId, $requestId);
+$response = $shipmentsClient->getShipment($campaignId, $requestId);
+$result = $response->getResult();
+$shipment = $result->getShipmentRequest();
+$shipment = $response->getResult();
 // Получаем список документов поставки
 $documents = $shipment->getDocuments();
 foreach ($documents as $document) {
@@ -660,7 +672,8 @@ foreach ($statusHistory as $statusHistoryRow) {
 $shipmentsClient = new \Yandex\Beru\Partner\Clients\ShipmentsClient($clientId, $token);
 $campaignId = 125874;
 $requestId = 45119;
-$shipmentItems = $shipmentsClient->getShipmentItems($campaignId, $requestId);
+$shipmentResponse = $shipmentsClient->getShipmentItems($campaignId, $requestId);
+$shipmentItems = $shipmentResponse->getResult();
 // Получаем список товаров, входящих в поставку
 $items = $shipmentItems->getShipmentItems();
 // Получаем первый товар

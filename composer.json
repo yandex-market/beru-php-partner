@@ -1,7 +1,7 @@
 {
-  "name": "yandex-market/yandex-market-php-partner",
-  "description": "Yandex PHP Market Partners library.",
-  "keywords":["yandex","sdk", "market"],
+  "name": "yandex-market/beru-php-partner",
+  "description": "PHP library of Partners Beru API.",
+  "keywords":["yandex","sdk", "market", "beru"],
   "type":"library",
   "license": "MIT",
   "minimum-stability": "dev",
@@ -18,8 +18,8 @@
   },
   "authors": [
     {
-      "name": "Kirill Litvinov",
-      "email": "ym-sdk@yandex-team.ru"
+      "name": "Vitaliia Smahlenko",
+      "email": "vsmahlenko@yandex-team.ru"
     }
   ],
   "autoload": {

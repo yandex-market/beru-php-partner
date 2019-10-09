@@ -60,8 +60,9 @@ $hiddenOffersClient = new \Yandex\Beru\Partner\Clients\HiddenOffersClient($clien
 
 // Получаем объект со скрытыми товарами
 $hiddenOffersObject = $hiddenOffersClient->getInfo($campaignId);
+$result = $hiddenOffersObject->getResult();
 // Получаем итератор по скрытым товарам
-$hiddenOffers = $hiddenOffersObject->getHiddenOffers();
+$hiddenOffers = $result->getHiddenOffers();
 // Печатаем информацию о скрытиях
 foreach ($hiddenOffers as $hiddenOffer) {
     echo "Comment: " . $hiddenOffer->getComment();
@@ -69,4 +70,4 @@ foreach ($hiddenOffers as $hiddenOffer) {
     echo "TtlInHours: " . $hiddenOffer->getTtlInHours();
 }
 ```
-Подробнее см. в [документации API.](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-hidden-offers-docpage/)
+Подробнее см. [Wiki](https://github.com/yandex-market/beru-php-partner/wiki) и документацию партнерского API для моделей подключения «[Витрина + фулфилмент](https://yandex.ru/market/partner-marketplace/doc/dg/concepts/about-docpage/)» и «[Витрина + доставка](https://yandex.ru/market/partner-marketplace/doc/dg/concepts/about-docpage/)».   

@@ -70,4 +70,4 @@ foreach ($hiddenOffers as $hiddenOffer) {
     echo "TtlInHours: " . $hiddenOffer->getTtlInHours();
 }
 ```
-Подробнее см. [Wiki](https://github.com/yandex-market/beru-php-partner/wiki) и документацию партнерского API для моделей подключения «[Витрина + фулфилмент](https://yandex.ru/market/partner-marketplace/doc/dg/concepts/about-docpage/)» и «[Витрина + доставка](https://yandex.ru/market/partner-marketplace/doc/dg/concepts/about-docpage/)».   
+Подробнее см. [Wiki](https://github.com/yandex-market/beru-php-partner/wiki) и документацию партнерского API для моделей подключения «[Витрина + фулфилмент](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)» и «[Витрина + доставка](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)».   

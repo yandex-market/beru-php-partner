@@ -9,6 +9,7 @@ class Item extends Model
     protected $count;
     protected $id;
     protected $offerId;
+    protected $feedId;
 
     /**
      * @return int
@@ -32,5 +33,13 @@ class Item extends Model
     public function getOfferId()
     {
         return $this->offerId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFeedId()
+    {
+        return $this->feedId;
     }
 }

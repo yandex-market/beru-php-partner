@@ -3,6 +3,7 @@
 namespace Yandex\Beru\Partner\Models;
 
 use Yandex\Common\Model;
+use DateTime;
 
 class Period extends Model
 {
@@ -23,5 +24,21 @@ class Period extends Model
     public function getEnd()
     {
         return $this->end;
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getStartTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getStart());
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getEndTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getEnd());
     }
 }

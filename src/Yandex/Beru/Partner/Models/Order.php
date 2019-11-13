@@ -2,10 +2,39 @@
 
 namespace Yandex\Beru\Partner\Models;
 
+use DateTime;
 use Yandex\Common\Model;
 
 class Order extends Model
 {
+    const PAYMENT_TYPE_POSTPAID = "POSTPAID";
+    const PAYMENT_TYPE_PREPAID = "PREPAID";
+
+    const PAYMENT_METHOD_CARD_ON_DELIVERY = "CARD_ON_DELIVERY";
+    const PAYMENT_METHOD_CASH_ON_DELIVERY = "CASH_ON_DELIVERY";
+    const PAYMENT_METHOD_YANDEX = "YANDEX";
+
+    const STATUS_CANCELLED = "CANCELLED";
+    const STATUS_DELIVERED = "DELIVERED";
+    const STATUS_DELIVERY = "DELIVERY";
+    const STATUS_PICKUP = "PICKUP";
+    const STATUS_PROCESSING = "PROCESSING";
+
+    const SUBSTATUS_STARTED = "STARTED";
+    const SUBSTATUS_PROCESSING_EXPIRED = "PROCESSING_EXPIRED";
+    const SUBSTATUS_REPLACING_ORDER = "REPLACING_ORDER";
+    const SUBSTATUS_RESERVATION_EXPIRED = "RESERVATION_EXPIRED";
+    const SUBSTATUS_SHOP_FAILED = "SHOP_FAILED";
+    const SUBSTATUS_USER_CHANGED_MIND = "USER_CHANGED_MIND";
+    const SUBSTATUS_USER_NOT_PAID = "USER_NOT_PAID";
+    const SUBSTATUS_USER_REFUSED_DELIVERY = "USER_REFUSED_DELIVERY";
+    const SUBSTATUS_USER_REFUSED_PRODUCT = "USER_REFUSED_PRODUCT";
+    const SUBSTATUS_USER_REFUSED_QUALITY = "USER_REFUSED_QUALITY";
+    const SUBSTATUS_USER_UNREACHABLE = "USER_UNREACHABLE";
+
+    const SUBSTATUS_READY_TO_SHIP = "READY_TO_SHIP";
+    const SUBSTATUS_SHIPPED = "SHIPPED";
+
     protected $cancelRequested;
     protected $creationDate;
     protected $currency;
@@ -154,5 +183,13 @@ class Order extends Model
     public function getSubsidyTotal()
     {
         return $this->subsidyTotal;
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getCreationDateType()
+    {
+        return DateTime::createFromFormat("d-m-Y H-i-s", $this->getCreationDate());
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Yandex\Beru\Partner\Models;
 
+use DateTime;
 use Yandex\Common\ObjectModel;
 
 class StatusHistoryRow extends ObjectModel
@@ -23,5 +24,13 @@ class StatusHistoryRow extends ObjectModel
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getDateTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getDate());
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Yandex\Beru\Partner\Models;
 
+use DateTime;
 use Yandex\Common\ObjectModel;
 
 class Request extends ObjectModel
@@ -77,5 +78,21 @@ class Request extends ObjectModel
     public function getHasDefects()
     {
         return $this->hasDefects;
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getRequestedDateTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getRequestedDate());
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getUpdatedAtTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getUpdatedAt());
     }
 }

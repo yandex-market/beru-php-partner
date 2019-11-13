@@ -2,6 +2,7 @@
 
 namespace Yandex\Beru\Partner\Models;
 
+use DateTime;
 use Yandex\Common\Model;
 
 class OfferPrice extends Model
@@ -36,5 +37,10 @@ class OfferPrice extends Model
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    public function getEndTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getUpdatedAt());
     }
 }

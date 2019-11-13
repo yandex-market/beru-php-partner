@@ -7,6 +7,9 @@ use Yandex\Beru\Partner\Models\Common\Errors;
 
 class PostResponse extends Model
 {
+    const RESPONSE_STATUS_OK = "OK";
+    const RESPONSE_STATUS_ERROR = "Error";
+
     protected $errors;
     protected $status;
     protected $result;

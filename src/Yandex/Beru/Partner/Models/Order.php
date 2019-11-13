@@ -133,7 +133,7 @@ class Order extends Model
     }
 
     /**
-     * @return Items
+     * @return ItemsOrder
      */
     public function getItems()
     {

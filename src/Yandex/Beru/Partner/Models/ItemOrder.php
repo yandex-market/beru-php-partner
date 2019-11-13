@@ -86,7 +86,7 @@ class ItemOrder extends Model
     }
 
     /**
-     * @return int+
+     * @return int
      */
     public function getFeedId()
     {

@@ -6,6 +6,10 @@ use Yandex\Common\Model;
 
 class Delivery extends Model
 {
+    const TYPE_DELIVERY = "DELIVERY";
+    const TYPE_PICKUP = "PICKUP";
+    const TYPE_POST = "POST";
+
     protected $deliveryPartnerType;
     protected $id;
     protected $serviceName;

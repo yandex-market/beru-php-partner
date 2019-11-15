@@ -6,6 +6,9 @@ use Yandex\Common\Model;
 
 class Promo extends Model
 {
+    const TYPE_MARKET_COUPON = "MARKET_COUPON";
+    const TYPE_MARKET_DEAL = "MARKET_DEAL";
+
     protected $marketPromoId;
     protected $subsidy;
     protected $type;

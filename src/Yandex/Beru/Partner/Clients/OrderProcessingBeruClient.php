@@ -54,4 +54,15 @@ class OrderProcessingBeruClient extends Client
 
         return $acceptOrderResponsenew->getOrder();
     }
+
+    /**
+     * @param $response
+     * @return array
+     */
+    public function getResponse($response)
+    {
+        $decodedResponseBody = $this->getDecodedBody($response);
+
+        return $decodedResponseBody;
+    }
 }

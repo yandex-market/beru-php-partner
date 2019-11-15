@@ -6,6 +6,13 @@ use Yandex\Common\Model;
 
 class PriceSuggestion extends Model
 {
+    const TYPE_DEFAULT_OFFER = "DEFAULT_OFFER";
+    const TYPE_BUYBOX = "BUYBOX";
+    const TYPE_MIN_PRICE_MARKET = "MIN_PRICE_MARKET";
+    const TYPE_PROMO = "PROMO";
+    const TYPE_MAX_DISCOUNT_BASE = "MAX_DISCOUNT_BASE";
+    const TYPE_MARKET_OUTLIER_PRICE = "MARKET_OUTLIER_PRICE";
+
     protected $type;
     protected $price;
     protected $period;

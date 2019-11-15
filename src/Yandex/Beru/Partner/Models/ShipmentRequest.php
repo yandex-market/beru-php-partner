@@ -2,6 +2,7 @@
 
 namespace Yandex\Beru\Partner\Models;
 
+use DateTime;
 use Yandex\Common\Model;
 
 class ShipmentRequest extends Model
@@ -77,5 +78,21 @@ class ShipmentRequest extends Model
     public function getHasDefects()
     {
         return $this->hasDefects;
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getRequestedDateTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getRequestedDate());
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getUpdatedAtTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getUpdatedAt());
     }
 }

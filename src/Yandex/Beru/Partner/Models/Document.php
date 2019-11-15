@@ -2,10 +2,13 @@
 
 namespace Yandex\Beru\Partner\Models;
 
+use DateTime;
 use Yandex\Common\ObjectModel;
 
 class Document extends ObjectModel
 {
+    const TYPE_SUPPLY = "SUPPLY";
+
     protected $id;
     protected $createdAt;
     protected $type;
@@ -32,5 +35,13 @@ class Document extends ObjectModel
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return DateTime|false
+     */
+    public function getCreatedAtTyped()
+    {
+        return DateTime::createFromFormat(DATE_ISO8601, $this->getCreatedAt());
     }
 }

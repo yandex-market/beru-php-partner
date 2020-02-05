@@ -190,6 +190,6 @@ class Order extends Model
      */
     public function getCreationDateType()
     {
-        return DateTime::createFromFormat("d-m-Y H-i-s", $this->getCreationDate());
+        return DateTime::createFromFormat("d-m-Y H:i:s", $this->getCreationDate());
     }
 }

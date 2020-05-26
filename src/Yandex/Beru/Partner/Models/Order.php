@@ -13,6 +13,10 @@ class Order extends Model
     const PAYMENT_METHOD_CARD_ON_DELIVERY = "CARD_ON_DELIVERY";
     const PAYMENT_METHOD_CASH_ON_DELIVERY = "CASH_ON_DELIVERY";
     const PAYMENT_METHOD_YANDEX = "YANDEX";
+    const PAYMENT_APPLE_PAY = "APPLE_PAY";
+    const PAYMENT_GOOGLE_PAY = "GOOGLE_PAY";
+    const PAYMENT_METHOD_CREDIT = "CREDIT";
+    const PAYMENT_METHOD_EXTERNAL_CERTIFICATE = "EXTERNAL_CERTIFICATE";
 
     const STATUS_CANCELLED = "CANCELLED";
     const STATUS_DELIVERED = "DELIVERED";
@@ -34,6 +38,8 @@ class Order extends Model
 
     const SUBSTATUS_READY_TO_SHIP = "READY_TO_SHIP";
     const SUBSTATUS_SHIPPED = "SHIPPED";
+    const SUBSTATUS_DELIVERY_SERVICE_UNDELIVERED = "DELIVERY_SERVICE_UNDELIVERED";
+    const SUBSTATUS_RESERVATION_FAILED = "RESERVATION_FAILED";
 
     protected $cancelRequested;
     protected $creationDate;
@@ -51,6 +57,8 @@ class Order extends Model
     protected $items;
     protected $notes;
     protected $subsidyTotal;
+    protected $errorDetails;
+    protected $updateStatus;
 
     protected $mappingClasses = [
         'delivery' => Delivery::class,
@@ -191,5 +199,21 @@ class Order extends Model
     public function getCreationDateType()
     {
         return DateTime::createFromFormat("d-m-Y H:i:s", $this->getCreationDate());
+    }
+
+    /**
+     * @return string
+     */
+    public function getErrorDetails()
+    {
+        return $this->errorDetails;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdateStatus()
+    {
+        return $this->updateStatus;
     }
 }

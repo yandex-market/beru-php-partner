@@ -411,4 +411,89 @@ class OrderProcessingClientTest extends TestCase
             $deliveryService = $orderProcessingResponse->next();
         }
     }
+
+    public function testUpdateOrdersStatuses()
+    {
+        $json = file_get_contents(__DIR__ . '/' . $this->fixturesFolder . '/updateOrdersStatuses.json');
+        $jsonObj = json_decode($json);
+        $response = new Response(200, [], \GuzzleHttp\Psr7\stream_for($json));
+
+        $mock = $this->getMockBuilder(OrderProcessingClient::class)
+            ->setMethods(['sendRequest'])
+            ->getMock();
+
+        $mock->expects($this->any())
+            ->method('sendRequest')
+            ->will($this->returnValue($response));
+
+        $ordersResp = $mock->updateOrdersStatuses(self::CAMPAIGN_ID);
+        $result = $ordersResp->getResult();
+        $orders = $result->getOrders();
+        $order = $orders->current();
+
+
+        for ($i = 0; $i < $orders->count(); $i++) {
+            $this->assertEquals(
+                $jsonObj->result->orders[$i]->id,
+                $order->getId()
+            );
+            $this->assertEquals(
+                $jsonObj->result->orders[$i]->updateStatus,
+                $order->getUpdateStatus()
+            );
+
+            $order = $orders->next();
+        }
+    }
+
+    public function testGetDeliveryLabelsData()
+    {
+        $json = file_get_contents(__DIR__ . '/' . $this->fixturesFolder . '/deliveryLabelsData.json');
+        $jsonObj = json_decode($json);
+        $response = new Response(200, [], \GuzzleHttp\Psr7\stream_for($json));
+
+        $mock = $this->getMockBuilder(OrderProcessingClient::class)
+            ->setMethods(['sendRequest'])
+            ->getMock();
+
+        $mock->expects($this->any())
+            ->method('sendRequest')
+            ->will($this->returnValue($response));
+
+        $labelsResp = $mock->getDeliveryLabelsData(self::CAMPAIGN_ID, self::ORDER_ID);
+        $result = $labelsResp->getResult();
+        $orderId = $result->getOrderId();
+        $this->assertEquals(
+            $jsonObj->result->orderId,
+            $orderId
+        );
+
+        $placesNumber = $result->getPlacesNumber();
+        $this->assertEquals(
+            $jsonObj->result->placesNumber,
+            $placesNumber
+        );
+
+        $url = $result->getUrl();
+        $this->assertEquals(
+            $jsonObj->result->url,
+            $url
+        );
+
+        $parcelBoxLabels = $result->getParcelBoxLabels();
+        $label = $parcelBoxLabels->current();
+
+        for ($i = 0; $i < $parcelBoxLabels->count(); $i++) {
+            $this->assertEquals(
+                $jsonObj->result->parcelBoxLabels[$i]->place,
+                $label->getPlace()
+            );
+            $this->assertEquals(
+                $jsonObj->result->parcelBoxLabels[$i]->orderId,
+                $label->getOrderId()
+            );
+
+            $label = $parcelBoxLabels->next();
+        }
+    }
 }

@@ -1,0 +1,20 @@
+{
+  "status": "OK",
+  "result":
+  {
+    "orders":
+    [
+      {
+        "id": 1234,
+        "updateStatus": "OK",
+        "status": "PROCESSING",
+        "substatus": "READY_TO_SHIP"
+      },
+      {
+        "id": 123456,
+        "updateStatus": "ERROR",
+        "errorDetails": "Order not found: 123456"
+      }
+    ]
+  }
+}

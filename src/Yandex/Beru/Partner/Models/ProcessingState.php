@@ -12,6 +12,7 @@ class ProcessingState extends ObjectModel
     const STATUS_REJECTED = "REJECTED";
     const STATUS_SUSPENDED = "SUSPENDED";
     const STATUS_OTHER = "OTHER";
+    const STATUS_NEED_CONTENT = "NEED_CONTENT";
 
     protected $status;
     protected $notes;

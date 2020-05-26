@@ -16,6 +16,7 @@ class ItemOrder extends Model
     protected $shopSku;
     protected $feedId;
     protected $offerName;
+    protected $subsidy;
 
     protected $mappingClasses = [
         'promos' => Promos::class,
@@ -99,5 +100,13 @@ class ItemOrder extends Model
     public function getOfferName()
     {
         return $this->offerName;
+    }
+
+    /**
+     * @return double
+     */
+    public function getSubsidy()
+    {
+        return $this->subsidy;
     }
 }

@@ -1,0 +1,21 @@
+{
+  "status": "OK",
+  "result": {
+    "orderId": 5310374,
+    "placesNumber": 1,
+    "url": "https://api.partner.market.yandex.ru/campaigns/1000667133/orders/5310374/delivery/labels",
+    "parcelBoxLabels": [
+      {
+        "place": "2/5",
+        "weight": "1.3 кг",
+        "supplierName": "ООО Лучшая компания",
+        "deliveryServiceName": "OOO СДЭК",
+        "orderId": 5310374,
+        "orderNum": "5310374",
+        "fulfilmentId": "5310374-1",
+        "deliveryServiceId": "CDEK",
+        "url": "https://api.partner.market.yandex.ru/campaigns/1000667133/orders/5310374/delivery/shipments/1/boxes/5310374/label"
+      }
+    ]
+  }
+}

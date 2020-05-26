@@ -62,35 +62,6 @@ class PriceClient extends Client
     }
 
     /**
-     * Delete all prices set by API
-     *
-     * @see https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-prices-removals-docpage/
-     *
-     * @param $campaignId
-     * @return PostResponse
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Beru\Partner\Exception\PartnerRequestException
-     * @throws \Yandex\Common\Exception\ForbiddenException
-     * @throws \Yandex\Common\Exception\UnauthorizedException
-     */
-    public function deletePrices($campaignId)
-    {
-        $resource = 'campaigns/' . $campaignId . '/offer-prices/removals.json';
-        $response = $this->sendRequest(
-            'POST',
-            $this->getServiceUrl($resource),
-            ['json' =>
-                [
-                    'removeAll' => true,
-                ],
-            ]
-        );
-        $decodedResponseBody = $this->getDecodedBody($response->getBody());
-
-        return new PostResponse($decodedResponseBody);
-    }
-
-    /**
      * Get all prices set by API
      *
      * @see https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-offer-prices-docpage/

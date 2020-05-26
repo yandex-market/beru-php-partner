@@ -8,6 +8,7 @@ class Mapping extends ObjectModel
 {
     protected $marketSku;
     protected $categoryId;
+    protected $modelId;
 
     /**
      * @return int
@@ -17,8 +18,19 @@ class Mapping extends ObjectModel
         return $this->marketSku;
     }
 
+    /**
+     * @return int
+     */
     public function getCategoryId()
     {
         return $this->categoryId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getModelId()
+    {
+        return $this->modelId;
     }
 }

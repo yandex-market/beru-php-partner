@@ -7,6 +7,8 @@ use Yandex\Common\ObjectModel;
 class AwaitingModerationMapping extends ObjectModel
 {
     protected $marketSku;
+    protected $categoryId;
+    protected $modelId;
 
     /**
      * @return int
@@ -14,5 +16,21 @@ class AwaitingModerationMapping extends ObjectModel
     public function getMarketSku()
     {
         return $this->marketSku;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCategoryId()
+    {
+        return $this->categoryId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getModelId()
+    {
+        return $this->modelId;
     }
 }

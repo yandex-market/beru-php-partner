@@ -56,7 +56,7 @@ $clientId = '9876543210fedcbaabcdef0123456789';
 $token = '01234567-89ab-cdef-fedc-ba9876543210';
 
 // Создаем экземпляр клиента с методами управления скрытыми товарами
-$hiddenOffersClient = new \Yandex\Beru\Partner\Clients\HiddenOffersClient($clientId, $token);
+$hiddenOffersClient = new \Yandex\Marketplace\Partner\Clients\HiddenOffersClient($clientId, $token);
 
 // Получаем объект со скрытыми товарами
 $hiddenOffersObject = $hiddenOffersClient->getInfo($campaignId);

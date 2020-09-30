@@ -1,8 +1,8 @@
 <?php
 
-namespace Yandex\Tests\Beru\Partner;
+namespace Yandex\Tests\Marketplace\Partner;
 
-use Yandex\Beru\Partner\Clients\OrderProcessingBeruClient;
+use Yandex\Marketplace\Partner\Clients\OrderProcessingBeruClient;
 use Yandex\Tests\TestCase;
 
 class OrderProcessingBeruClientTest extends TestCase

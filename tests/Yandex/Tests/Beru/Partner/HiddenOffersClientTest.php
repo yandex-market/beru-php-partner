@@ -1,10 +1,10 @@
 <?php
 
-namespace Yandex\Tests\Beru\Partner;
+namespace Yandex\Tests\Marketplace\Partner;
 
 use GuzzleHttp\Psr7\Response;
 use Yandex\Tests\TestCase;
-use Yandex\Beru\Partner\Clients\HiddenOffersClient;
+use Yandex\Marketplace\Partner\Clients\HiddenOffersClient;
 
 class HiddenOffersClientTest extends TestCase
 {

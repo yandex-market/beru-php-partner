@@ -1,5 +1,5 @@
 {
-  "name": "yandex-market/beru-php-partner",
+  "name": "yandex-market/marketplace-php-partner",
   "description": "PHP library of Partners Marketplace API.",
   "keywords":["yandex","sdk", "market", "beru"],
   "type":"library",

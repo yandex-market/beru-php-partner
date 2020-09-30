@@ -1,9 +1,9 @@
 <?php
 
-namespace Yandex\Tests\Beru\Partner;
+namespace Yandex\Tests\Marketplace\Partner;
 
 use Yandex\Tests\TestCase;
-use Yandex\Beru\Partner\Clients\StocksClient;
+use Yandex\Marketplace\Partner\Clients\StocksClient;
 
 class StocksClientTest extends TestCase
 {

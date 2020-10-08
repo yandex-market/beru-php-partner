@@ -1,9 +1,9 @@
-# PHP-библиотека партнерского API Беру
+# PHP-библиотека партнерского API маркетплейса Яндекс.Маркета
 
-Партнерский API Беру предназначен для партнеров, подключенных к маркетплейсу по моделям «Витрина + фулфилмент» и «Витрина + доставка».
+Партнерский API маркетплейса Маркета предназначен для партнеров, подключенных к маркетплейсу по моделям «Витрина + фулфилмент» и «Витрина + доставка».
 
 * Для модели «[Витрина + фулфилмент](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)» API позволяет управлять ассортиментом и ценами на товары.
-* Для модели «[Витрина + доставка](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/concepts/about-docpage/)» API позволяет управлять ассортиментом, ценами на товары и заказами, а также передавать Беру информацию об остатках на складе.
+* Для модели «[Витрина + доставка](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/concepts/about-docpage/)» API позволяет управлять ассортиментом, ценами на товары и заказами, а также передавать Маркету информацию об остатках на складе.
 
 Библиотека написана на языке PHP и содержит методы для работы с партнерским API. 
 
@@ -15,10 +15,10 @@
 ## Требования
 
 * PHP 5.6 или выше.
-* Зарегистрированный магазин на Беру. 
+* Зарегистрированный магазин на маркетплейсе Яндекс.Маркета. 
 * Зарегистрированное приложение с авторизационным токеном. 
   
-Подробнее см. раздел [С чего начать](https://github.com/yandex-market/beru-php-partner/wiki/С-чего-начать) в Wiki.
+Подробнее см. раздел [С чего начать](https://github.com/yandex-market/marketplace-php-partner/wiki/С-чего-начать) в Wiki.
 
 ## Лицензия и условия использования
 
@@ -35,7 +35,7 @@
    ```json
    {
        "require": {
-           "yandex-market/beru-php-partner": "*"
+           "yandex-market/marketplace-php-partner": "*"
        }
    }
    ```
@@ -70,4 +70,4 @@ foreach ($hiddenOffers as $hiddenOffer) {
     echo "TtlInHours: " . $hiddenOffer->getTtlInHours();
 }
 ```
-Подробнее см. [Wiki](https://github.com/yandex-market/beru-php-partner/wiki) и документацию партнерского API для моделей подключения «[Витрина + фулфилмент](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)» и «[Витрина + доставка](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)».   
+Подробнее см. [Wiki](https://github.com/yandex-market/marketplace-php-partner/wiki) и документацию партнерского API для моделей подключения «[Витрина + фулфилмент](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)» и «[Витрина + доставка](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)».   

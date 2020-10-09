@@ -212,7 +212,7 @@ class OrderProcessingClient extends Client
      */
     public function getDeliveryLabelForBoxes($campaignId, $orderId, $shipmentId, $boxId)
     {
-        $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/shipments/' . $shipmentId . '/boxes/' . $boxId . 'label.json';
+        $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/shipments/' . $shipmentId . '/boxes/' . $boxId . '/label.json';
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $header = $response->getHeader("Content-Type");
         if ($header[0] == "application/pdf") {

@@ -15,15 +15,17 @@ class PriceClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return GetRecommendedPricesResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getRecommendedPrices ($campaignId, array $params = [])
+    public function getRecommendedPrices ($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/offer-prices/suggestions.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'POST',
             $this->getServiceUrl($resource),
@@ -42,15 +44,17 @@ class PriceClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return PostResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function updatePrices($campaignId, array $params = [])
+    public function updatePrices($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/offer-prices/updates.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'POST',
             $this->getServiceUrl($resource),
@@ -68,16 +72,17 @@ class PriceClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return GetOfferPricesResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getOffersPrices($campaignId, array $params = [])
+    public function getOffersPrices($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/offer-prices.json';
-        $resource .= '?' . $this->buildQueryString($params);
+        $resource .= '?' . $this->buildQueryString($params, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 

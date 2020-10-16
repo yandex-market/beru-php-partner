@@ -16,15 +16,17 @@ class ShipmentsClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return ShipmentsResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function createShipment($campaignId, array $params = [])
+    public function createShipment($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/shipments/requests.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'POST',
             $this->getServiceUrl($resource),
@@ -42,16 +44,17 @@ class ShipmentsClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return GetShipmentsResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getShipments($campaignId, array $params = [])
+    public function getShipments($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/shipments/requests.json';
-        $resource .= '?' . $this->buildQueryString($params);
+        $resource .= '?' . $this->buildQueryString($params, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 
@@ -66,16 +69,17 @@ class ShipmentsClient extends Client
      * @param $campaignId
      * @param $requestId
      * @param array $params
+     * @param null $dbgKey
      * @return GetShipmentResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getShipment($campaignId, $requestId, array $params = [])
+    public function getShipment($campaignId, $requestId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/shipments/requests/'.$requestId.'.json';
-        $resource .= '?' . $this->buildQueryString($params);
+        $resource .= '?' . $this->buildQueryString($params, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 
@@ -90,16 +94,17 @@ class ShipmentsClient extends Client
      * @param $campaignId
      * @param $requestId
      * @param array $params
+     * @param null $dbgKey
      * @return GetShipmentItemsResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getShipmentItems($campaignId, $requestId, array $params = [])
+    public function getShipmentItems($campaignId, $requestId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/shipments/requests/'.$requestId.'/items.json';
-        $resource .= '?' . $this->buildQueryString($params);
+        $resource .= '?' . $this->buildQueryString($params, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 
@@ -114,15 +119,17 @@ class ShipmentsClient extends Client
      * @param $campaignId
      * @param $requestId
      * @param $documentId
+     * @param null $dbgKey
      * @return mixed|\SimpleXMLElement
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function downloadDocument($campaignId, $requestId, $documentId)
+    public function downloadDocument($campaignId, $requestId, $documentId, $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/shipments/requests/'.$requestId.'/documents/'.$documentId;
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody()->getContents());
 

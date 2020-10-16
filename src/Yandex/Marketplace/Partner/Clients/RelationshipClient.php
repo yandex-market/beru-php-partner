@@ -15,15 +15,17 @@ class RelationshipClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return GetRecommendedRelationshipResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getRecommendedRelationship($campaignId, array $params = [])
+    public function getRecommendedRelationship($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/offer-mapping-entries/suggestions.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'POST',
             $this->getServiceUrl($resource),
@@ -42,15 +44,17 @@ class RelationshipClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return PostResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function updateRelationship($campaignId, array $params = [])
+    public function updateRelationship($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/offer-mapping-entries/updates.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'POST',
             $this->getServiceUrl($resource),
@@ -68,16 +72,17 @@ class RelationshipClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return GetActiveRelationshipResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getActiveRelationship($campaignId, array $params = [])
+    public function getActiveRelationship($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/offer-mapping-entries.json';
-        $resource .= '?' . $this->buildQueryString($params);
+        $resource .= '?' . $this->buildQueryString($params, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 

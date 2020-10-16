@@ -146,7 +146,6 @@ class Client extends AbstractServiceClient
     protected function sendRequest($method, $uri, array $options = [])
     {
         try {
-            var_dump($uri);
             $response = $this->getClient($this->headers)->request($method, $uri, $options);
         } catch (ClientException $ex) {
             $result = $ex->getResponse();

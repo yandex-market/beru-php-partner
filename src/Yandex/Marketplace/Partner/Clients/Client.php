@@ -105,6 +105,7 @@ class Client extends AbstractServiceClient
      */
     protected function buildQueryString(
         array $queryData,
+        $dbgKey = null,
         $prefix = '',
         $argSeparator = '&',
         $encType = PHP_QUERY_RFC3986
@@ -122,7 +123,9 @@ class Client extends AbstractServiceClient
                 $queryString = str_replace("{$key}={$value}", $value, $queryString);
             }
         }
-
+        if ($dbgKey) {
+            $queryString ? $queryString .= '&dbg=' . $dbgKey : $queryString .= 'dbg=' . $dbgKey;
+        }
         return $queryString;
     }
 
@@ -173,5 +176,13 @@ class Client extends AbstractServiceClient
         }
 
         return $response;
+    }
+
+    protected function addDebugKey($resource, $dbgKey)
+    {
+        if($dbgKey) {
+            return $resource . '?dbg=' . $dbgKey;
+        }
+        return $resource;
     }
 }

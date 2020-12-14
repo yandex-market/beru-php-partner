@@ -245,30 +245,4 @@ class OrderProcessingClient extends Client
 
         return new GetDeliveryLabelsDataResponse($decodedResponseBody);
     }
-
-    /**
-     * Return reception transfer act
-     *
-     * @see https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-shipments-reception-transfer-act.html
-     *
-     * @param $campaignId
-     * @return string
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
-     * @throws \Yandex\Common\Exception\ForbiddenException
-     * @throws \Yandex\Common\Exception\UnauthorizedException
-     */
-    public function getReceptionTransferAct($campaignId)
-    {
-        $resource = 'campaigns/' . $campaignId . '/shipments/reception-transfer-act.json';
-        $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
-        $header = $response->getHeader("Content-Type");
-        if ($header[0] == "application/pdf") {
-            return $response->getBody()->getContents();
-        }
-
-        $decodedResponseBody = $this->getDecodedBody($response->getBody());
-
-        return new PostResponse($decodedResponseBody);
-    }
 }

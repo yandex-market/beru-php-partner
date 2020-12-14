@@ -21,16 +21,17 @@ class OrderProcessingClient extends Client
      * @param $campaignId
      * @param $orderId
      * @param array $params
+     * @param null $dbgKey
      * @return \Yandex\Marketplace\Partner\Models\Order
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function updateOrderStatus($campaignId, $orderId, array $params = [])
+    public function updateOrderStatus($campaignId, $orderId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/status.json';
-
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'PUT',
             $this->getServiceUrl($resource),
@@ -51,16 +52,17 @@ class OrderProcessingClient extends Client
      * @param $orderId
      * @param $shipmentId
      * @param array $params
+     * @param null $dbgKey
      * @return GetInfoOrderBoxesResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function putInfoOrderBoxes($campaignId, $orderId, $shipmentId, array $params = [])
+    public function putInfoOrderBoxes($campaignId, $orderId, $shipmentId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/shipments/' . $shipmentId . '/boxes.json';
-
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'PUT',
             $this->getServiceUrl($resource),
@@ -79,16 +81,17 @@ class OrderProcessingClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return GetOrdersResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getOrders($campaignId, array $params = [])
+    public function getOrders($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/orders.json';
-        $resource .= '?' . $this->buildQueryString($params);
+        $resource .= '?' . $this->buildQueryString($params, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 
@@ -103,16 +106,17 @@ class OrderProcessingClient extends Client
      * @param $campaignId
      * @param $orderId
      * @param array $params
+     * @param null $dbgKey
      * @return \Yandex\Marketplace\Partner\Models\Order
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getOrder($campaignId, $orderId, array $params = [])
+    public function getOrder($campaignId, $orderId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '.json';
-        $resource .= '?' . $this->buildQueryString($params);
+        $resource .= '?' . $this->buildQueryString($params, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
         $getOrderResponse = new GetOrderResponse($decodedResponseBody);
@@ -125,15 +129,17 @@ class OrderProcessingClient extends Client
      *
      * @see https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-delivery-services-docpage/
      *
+     * @param null $dbgKey
      * @return \Yandex\Marketplace\Partner\Models\DeliveryServices
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getDeliveryService()
+    public function getDeliveryService($dbgKey = null)
     {
         $resource = 'delivery/services.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
         $getDeliveryServiceResponse = new GetDeliveryServiceResponse($decodedResponseBody['result']);
@@ -148,16 +154,17 @@ class OrderProcessingClient extends Client
      *
      * @param $campaignId
      * @param array $params
+     * @param null $dbgKey
      * @return UpdateOrdersStatusesResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function updateOrdersStatuses($campaignId, array $params = [])
+    public function updateOrdersStatuses($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/orders/status-update.json';
-
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'POST',
             $this->getServiceUrl($resource),
@@ -175,15 +182,17 @@ class OrderProcessingClient extends Client
      *
      * @param $campaignId
      * @param $orderId
+     * @param null $dbgKey
      * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getDeliveryLabels($campaignId, $orderId)
+    public function getDeliveryLabels($campaignId, $orderId, $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/labels.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $header = $response->getHeader("Content-Type");
         if ($header[0] == "application/pdf") {
@@ -204,15 +213,17 @@ class OrderProcessingClient extends Client
      * @param $orderId
      * @param $shipmentId
      * @param $boxId
+     * @param null $dbgKey
      * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      */
-    public function getDeliveryLabelForBoxes($campaignId, $orderId, $shipmentId, $boxId)
+    public function getDeliveryLabelForBoxes($campaignId, $orderId, $shipmentId, $boxId, $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/shipments/' . $shipmentId . '/boxes/' . $boxId . '/label.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $header = $response->getHeader("Content-Type");
         if ($header[0] == "application/pdf") {
@@ -231,18 +242,46 @@ class OrderProcessingClient extends Client
      *
      * @param $campaignId
      * @param $orderId
+     * @param null $dbgKey
      * @return GetDeliveryLabelsDataResponse
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Yandex\Common\Exception\ForbiddenException
+     * @throws \Yandex\Common\Exception\UnauthorizedException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
+     */
+    public function getDeliveryLabelsData($campaignId, $orderId, $dbgKey = null)
+    {
+        $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/labels/data.json';
+        $resource = $this->addDebugKey($resource, $dbgKey);
+        $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
+        $decodedResponseBody = $this->getDecodedBody($response->getBody());
+
+        return new GetDeliveryLabelsDataResponse($decodedResponseBody);
+    }
+
+    /**
+     * Return reception transfer act
+     *
+     * @see https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-shipments-reception-transfer-act.html
+     *
+     * @param $campaignId
+     * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
      */
-    public function getDeliveryLabelsData($campaignId, $orderId)
+    public function getReceptionTransferAct($campaignId)
     {
-        $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/labels/data.json';
+        $resource = 'campaigns/' . $campaignId . '/shipments/reception-transfer-act.json';
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
+        $header = $response->getHeader("Content-Type");
+        if ($header[0] == "application/pdf") {
+            return $response->getBody()->getContents();
+        }
+
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 
-        return new GetDeliveryLabelsDataResponse($decodedResponseBody);
+        return new PostResponse($decodedResponseBody);
     }
 }

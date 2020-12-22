@@ -1,9 +1,9 @@
 # PHP-библиотека партнерского API маркетплейса Яндекс.Маркета
 
-Партнерский API маркетплейса Маркета предназначен для партнеров, подключенных к маркетплейсу по моделям «Витрина + фулфилмент» и «Витрина + доставка».
+Партнерский API маркетплейса Маркета предназначен для партнеров, подключенных к маркетплейсу по моделям FBY и FBS.
 
-* Для модели «[Витрина + фулфилмент](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)» API позволяет управлять ассортиментом и ценами на товары.
-* Для модели «[Витрина + доставка](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/concepts/about-docpage/)» API позволяет управлять ассортиментом, ценами на товары и заказами, а также передавать Маркету информацию об остатках на складе.
+* Для модели [FBY](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/) API позволяет управлять ассортиментом и ценами на товары.
+* Для модели [FBS](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/concepts/about-docpage/) API позволяет управлять ассортиментом, ценами на товары и заказами, а также передавать Маркету информацию об остатках на складе.
 
 Библиотека написана на языке PHP и содержит методы для работы с партнерским API. 
 
@@ -70,4 +70,4 @@ foreach ($hiddenOffers as $hiddenOffer) {
     echo "TtlInHours: " . $hiddenOffer->getTtlInHours();
 }
 ```
-Подробнее см. [Wiki](https://github.com/yandex-market/marketplace-php-partner/wiki) и документацию партнерского API для моделей подключения «[Витрина + фулфилмент](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)» и «[Витрина + доставка](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/)».   
+Подробнее см. [Wiki](https://github.com/yandex-market/marketplace-php-partner/wiki) и документацию партнерского API для моделей подключения [FBY](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/) и [FBS](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/).   

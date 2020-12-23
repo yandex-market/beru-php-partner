@@ -1,5 +1,5 @@
 Ниже представлено описание и примеры запросов к API и методов, которыми они реализованы. В примерах указаны только некоторые аргументы методов. Остальные аргументы описаны в статьях о соответствующих запросах 
-[технической документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/all-methods-docpage/). Ссылки на статьи приведены в описаниях методов.
+[технической документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/all-methods-docpage/). Ссылки на статьи приведены в описаниях методов.
 
 # Управление показом товаров
 
@@ -31,7 +31,7 @@ foreach ($hiddenOffers as $hiddenOffer) {
 
 Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-hidden-offers-docpage/).
 
 ## Скрытие товаров и настройки скрытия
 
@@ -68,7 +68,7 @@ foreach ($hiddenOffers as $hiddenOffer) {
   ]);
   ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-hidden-offers-docpage/).
 
 ## Возобновление показа товаров
 
@@ -86,7 +86,7 @@ $showOffersResponse = $hiddenOffersClient->showOffers($campaignId, [
 ]);
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/delete-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/delete-campaigns-id-hidden-offers-docpage/).
 
 # Управление ценами
 
@@ -129,13 +129,13 @@ foreach ($recommendedPrices as $recommendedPrice) {
 }
 ```
 
-Рекомендации зависят от цен, установленных на товары другими партнерами. Если один товар поставляют несколько партнеров, на маркетплейсе Яндекс.Маркета сначала продается товар с более низкой ценой. Когда закончится товар по низкой цене, начнет продаваться товар по более высокой цене. Подробнее см. в разделе [Цены и рекомендации](https://yandex.ru/support/marketplace/catalog/prices.html) Справки маркетплейса Маркета для партнеров.
+Рекомендации зависят от цен, установленных на товары другими партнерами. Если один товар поставляют несколько партнеров, на маркетплейсе Яндекс.Маркета сначала продается товар с более низкой ценой. Когда закончится товар по низкой цене, начнет продаваться товар по более высокой цене. Подробнее см. в разделе [Цены и рекомендации](https://yandex.ru/support/marketplace/catalog/prices.html) Справки Маркета для моделей FBY и FBS.
 
 Выходные данные содержат для каждого товара несколько рекомендованных цен, соответствующих разной частоте показов. Если на маркетплейсе Яндекс.Маркета проходит или будет проходить акция, в которой может участвовать товар, то выходные данные также содержат рекомендованную цену для участия в акции.
 
 Метод возвращает [итератор](Основные-понятия#Итераторы).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-prices-suggestions-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-prices-suggestions-docpage/).
 
 ## Установка цен
 
@@ -187,7 +187,7 @@ foreach ($recommendedPrices as $recommendedPrice) {
   ]]);
   ```  
   
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-prices-updates-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-prices-updates-docpage/).
 
 ## Список цен, установленных через API
 
@@ -213,7 +213,7 @@ foreach ($offerPrices as $offerPrice) {
 
 Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-offer-prices-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-offer-prices-docpage/).
 
 # Управление связями между товарами на маркетплейсе Яндекс.Маркета и вашими
 
@@ -257,7 +257,7 @@ foreach ($recommendedRelationships as $recommendedRelationship) {
 
 Метод возвращает [итератор](Основные-понятия#Итераторы).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-mapping-entries-suggestions-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-mapping-entries-suggestions-docpage/).
 
 ## Создание связей
 
@@ -296,7 +296,7 @@ $updateRelationshipResponse = $relationshipClient->updateRelationship($campaignI
 
 Перед публикацией связи проходят модерацию. Если в одной из отправленных связей найдена ошибка, ответ на запрос будет иметь HTTP-код `400 Bad Request`, и ни одна из связей не отправится на модерацию.
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-mapping-entries-updates-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-mapping-entries-updates-docpage/).
 
 ## Список связей
 
@@ -339,144 +339,226 @@ foreach ($activeRelationships as $activeRelationship) {
 
 Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-offer-mapping-entries-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-offer-mapping-entries-docpage/).
 
-# Управление поставками
+## Обработка заказов
 
-Методы клиента `ShipmentsClient` позволяют магазину работать с поставками товаров на склад Яндекс.Маркета: отправлять заявки на поставки, получать о них общую информацию и списки товаров, скачивать документы.
+Для обработки заказов в библиотеке реализовано два клиента: для запросов от Яндекс.Маркета к магазину и для запросов от магазина к Яндекс.Маркету.
+
+### Запросы от Яндекс.Маркета к магазину
+
+Клиент `OrderProcessingMarketplaceClient` позволяет магазину обрабатывать запросы информации о заказе от Яндекс.Маркета.
 
 ```php
-$shipmentsClient = new \Yandex\Marketplace\Partner\Clients\ShipmentsClient($clientId, $token);
+$OrderProcessingMarketplaceClient = new \Yandex\Marketplace\Partner\Clients\OrderProcessingMarketplaceClient();
 ```
 
-## Создание заявки на поставку
+#### Запрос информации о товарах
 
-Метод `createShipment` создает заявку на поставку товаров на склад Яндекс.Маркета.
+**Внимание!** Запрос отправляет Яндекс.Маркет.
+
+Метод `getCart` декодирует запрос Яндекс.Маркета об актуальных ценах и наличии товаров из корзины пользователя.
 
 ```php
-// Создаем заявку на поставку
-$createShipmentResponse = $shipmentsClient->createShipment($campaignId, [
-    // Дата и время поставки, обязательный параметр
-    'date' => '2019-10-17T07:30:00+03:00',
-    // Список товаров, входящих в поставку, обязательный параметр    
-    'shipmentItems' => [
+// Получаем список товаров в корзине
+$cart = $OrderProcessingMarketplaceClient->getCart($request);
+
+// Печатаем информацию о товарах в корзине
+$items = $cart->getItems();
+foreach ($items as $item) {
+    print_r($item->getCount());
+    print_r($item->getOfferId());
+}
+```
+
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-cart-docpage/).
+
+#### Передача заказа и запрос на принятие заказа
+
+**Внимание!** Запрос отправляет Яндекс.Маркет.
+
+Метод `acceptOrder` декодирует запрос Яндекс.Маркета на подтверждение или отказ от заказа.
+
+```php
+// Получаем заказ
+$order = $OrderProcessingMarketplaceClient->acceptOrder($request);
+
+// Печатаем информацию о товарах в корзине
+$items = $order->getItems();
+foreach ($items as $item) {
+   print_r($item);
+}
+```
+
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-order-accept-docpage/).
+
+#### Уведомление о смене статуса заказа
+
+**Внимание!** Запрос отправляет Яндекс.Маркет.
+
+Метод `orderStatus` декодирует запрос Яндекс.Маркета о смене статуса заказа.
+
+```php
+// Получаем заказ
+$order = $OrderProcessingMarketplaceClient->orderStatus($request);
+
+// Получаем новый статус заказа
+$orderStatus = $order->getStatus();
+```
+
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-order-status-docpage/).
+
+### Запросы от магазина к Яндекс.Маркету
+
+Клиент `OrderProcessingClient` позволяет магазину получать и изменять информацию о заказах.
+
+```php
+$orderProcessingClient = new \Yandex\Marketplace\Partner\Clients\OrderProcessingClient();
+```
+
+#### Изменение статуса заказа
+
+Метод `updateOrderStatus` изменяет статус заказа.
+
+```php
+// Отменяем заказ
+$updateOrderStatusResponse = $orderProcessingClient->updateOrderStatus($campaignId,
+    // Идентификатор заказа, обязательный параметр
+    $orderId, 
+    // Информация о заказе, обязательный параметр   
+    ["order" =>
         [
-            // Ваш SKU, обязательный параметр        
-            'shopSku' => 'iphone-6s-32gb-silver',
-            // Название товара, обязательный параметр            
-            'itemName' => 'Смартфон Apple iPhone 6S 32GB серебристый',
-            // Штрихкоды товара, обязательный параметр, 
-            // должен содержать хотя бы один штрихкод            
-            'barcodes' => ['2341dasfav23d',],
-            // Количество единиц или упаковок товара в поставке,
+            // Новый статус заказа, обязательный параметр  
+            "status" => "CANCELLED",
+            // Причина отмены заказа (для нового статуса CANCELLED),
+            // обязательный параметр      
+            "substatus" => "SHOP_FAILED"
+        ]
+]);
+
+// Проверяем, что запрос на отмену заказа принят
+if ($updateOrderStatusResponse->getCancelRequested()) {
+    echo "Cancel requested";
+} else {
+    echo "Cancel NOT requested";
+}    
+```
+
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/put-campaigns-id-orders-id-status-docpage/).
+
+#### Передача информации о коробках в заказе
+
+Метод `putInfoOrderBoxes` передает Яндекс.Маркету информацию о распределении товаров, входящих в заказ, по коробкам.
+
+```php
+// Отправляем информацию о коробках
+$putInfoOrderBoxesResponse = $orderProcessingClient->putInfoOrderBoxes($campaignId,
+    // Идентификатор заказа, обязательный параметр    
+    $orderid,
+    // Идентификатор посылки, обязательный параметр    
+    $shipmentId,
+    // Информация о новых и обновленных коробках в заказе, 
+    //обязательный параметр
+    ["boxes" => [
+        [
+            // Идентификатор коробки в информационной системе магазина,
             // обязательный параметр            
-            'count' => 12,
-            // Объявленная ценность одной единицы товара, обязательный параметр            
-            'estimatedPrice' => 30000.00,
-            // Валюта, обязательный параметр            
-            'currency' => 'RUR',
-            // Идентификатор ставки НДС, применяемой для товара,
-            // обязательный параметр            
-            'vat' => 'VAT_18',
-        ],
+            'fulfilmentId' => '8152422-1',
+            // Масса брутто коробки в граммах. Обязательный параметр,
+            // если создается новая коробка            
+            'weight' => 1000,
+            // Ширина коробки в сантиметрах. Обязательный параметр,
+            // если создается новая коробка            
+            'width' => 12,
+            // Высота коробки в сантиметрах. Обязательный параметр,
+            // если создается новая коробка            
+            'height' => 22,
+            // Глубина коробки в сантиметрах. Обязательный параметр,
+            // если создается новая коробка            
+            'depth' => 23,
+            // Список товаров в коробке. Если нужно создать новую коробку, 
+            // параметр обязателен и должен содержать информацию 
+            // хотя бы об одном товаре             
+            'items' => [
+                [
+                    // Идентификатор товара в рамках заказа,
+                    // обязательный параметр                    
+                    'id' => 13456974,
+                    // Количество единиц товара в коробке,
+                    // обязательный параметр                    
+                    'count' => 1,
+                ]
+            ]
+        ]
     ],
 ]);
-// Получаем информацию о поставке
-$shipmentRequest = $createShipmentResponse->getShipmentRequest();
-```
-
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-shipments-requests-docpage/).
-
-## Информация о поставках
-
-Метод `getShipments` возвращает основную информацию о поставках товаров на склад Яндекс.Маркета.
-
-```php
-// Получаем информацию о поставках товаров
-$shipments = $shipmentsClient->getShipments($campaignId);
-// Получаем список поставок
-$requests = $shipments->getRequests();
-// Получаем первую поставку
-$request = $requests->current();
-// Получаем количество поставок 
-$requestsCount = $requests->count();
-// Печатаем идентификаторы поставок 
-for ($i = 0; $i < $requestsCount; $i++) {
-    echo 'ID: ' . $request->getId();
-    $request = $requests->next();
+$boxes = $putInfoOrderBoxesResponse->getBoxes();
+// Печатаем информацию о коробках
+foreach ($boxes as $box) {
+    echo "Id: " . $box->getId();
+    echo "Weight: " . $box->getWeight();
+    echo "Depth: " . $box->getDepth();
+    // Печатаем список товаров в коробке
+    $items = $box->getItems();
+    foreach ($items as $item) {
+        echo "Id: " . $item->getId();
+        echo "Count: " . $item->getCount();
+    }
 }
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+#### Информация о заказах
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-docpage/).
-
-## Информация о поставке
-
-Метод `getShipment` возвращает подробную информацию о поставке товаров на склад Яндекс.Маркета.
+Метод `getOrders` возвращает информацию о заказах.
 
 ```php
-// Получаем информацию о поставке товаров
-$shipment = $shipmentsClient->getShipment(
-    $campaignId,
-    // Идентификатор поставки, обязательный параметр
-    $requestId
-);
-// Получаем список документов поставки
-$documents = $shipment->getDocuments();
-// Печатаем идентификаторы документов
-foreach ($documents as $document) {
-    echo 'ID: ' . $document->getId();
-}
-// Получаем историю изменений статуса поставки
-$statusHistory = $shipment->getStatusHistory();
-// Печатаем даты изменений
-foreach ($statusHistory as $statusHistoryRow) {
-    echo 'Date: ' . $statusHistoryRow->getDate();
-}
+// Получаем информацию о запрашиваемых заказах
+$ordersObject = $orderProcessingClient->getOrders($campaignId);
+// Получаем итератор по заказам
+
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-docpage/).
+#### Информация о заказе
 
-## Список товаров в поставке
-
-Метод `getShipmentItems` возвращает список товаров в поставке на склад Яндекс.Маркета.
+Метод `getOrder` возвращает информацию о заказе.
 
 ```php
-// Получаем объект с товарами, входящими в поставку
-$shipmentResponse = $shipmentsClient->getShipmentItems($campaignId, $requestId);
-$shipmentItemsObject = $shipmentResponse->getResult();
-// Получаем список товаров
-$items = $shipmentItemsObject->getShipmentItems();
-// Получаем первый товар
-$item = $items->current();
-// Получаем количество товаров
-$itemsCount = $items->count();
-// Печатаем ваши SKU товаров 
-for ($i = 0; $i < $itemsCount; $i++)
-{
-    echo "ShopSku: " . $item->getShopSku();
-    $item = $items->next();
-}
+// Получаем информацию о запрашиваемом заказе
+$ordersObject = $orderProcessingClient->getOrder($campaignId);
+
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+#### Справочник служб доставки
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-items-docpage/).
-
-## Скачивание акта приема-передачи
-
-Метод `downloadDocument` скачивает акт приема-передачи для поставки.
+Метод `getDeliveryService` возвращает справочник служб доставки.
 
 ```php
-// Получаем файл
-$downloadDocument = $shipmentsClient->downloadDocument(
-    $campaignId, 
-    // Идентификатор поставки, обязательный параметр    
-    $requestId, 
-    // Идентификатор документа, обязательный параметр  
-    $documentId
-);
+// Получаем список служб доставки
+$ordersObject = $orderProcessingClient->getDeliveryService($campaignId);
+// Получаем итератор по службам
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-documents-id-docpage/).
+## Остатки товаров
+
+Клиент `StocksClient` позволяет магазину работать с запросами информации об остатках товаров, которые присылает Яндекс.Маркет.
+
+```php
+$stocksClient = new \Yandex\Marketplace\Partner\Clients\StocksClient($clientId, $token);
+```
+
+### Запрос информации об остатках
+
+**Внимание!** Запрос отправляет Яндекс.Маркет.
+
+Метод `getStocks` декодирует запрос актуальной информации об остатках товаров, отправленный Яндекс.Маркетом.
+
+```php
+// Декодируем запрос информации об остатках
+$stocks = $stocksClient->getStocks($request);
+// Печатаем список ваших SKU товаров
+print_r($stocks->getSkus());
+// Печатаем идентификатор склада
+print_r($stocks->getWarehouseId());
+```
+
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-stocks-docpage/).

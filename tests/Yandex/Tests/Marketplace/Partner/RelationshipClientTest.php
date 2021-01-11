@@ -81,25 +81,25 @@ class RelationshipClientTest extends TestCase
         $this->assertEquals($jsonObj->status, $status);
     }
 
-    public function testDeleteRelationship()
-    {
-        $json = file_get_contents(__DIR__ . '/' . $this->fixturesFolder . '/postResponse.json');
-        $jsonObj = json_decode($json);
-        $response = new Response(200, [], \GuzzleHttp\Psr7\stream_for($json));
-
-        $mock = $this->getMockBuilder(RelationshipClient::class)
-            ->setMethods(['sendRequest'])
-            ->getMock();
-
-        $mock->expects($this->any())
-            ->method('sendRequest')
-            ->will($this->returnValue($response));
-
-        $priceResponse = $mock->deleteRelationship(self::CAMPAIGN_ID);
-        $status = $priceResponse->getStatus();
-
-        $this->assertEquals($jsonObj->status, $status);
-    }
+//    public function testDeleteRelationship()
+//    {
+//        $json = file_get_contents(__DIR__ . '/' . $this->fixturesFolder . '/postResponse.json');
+//        $jsonObj = json_decode($json);
+//        $response = new Response(200, [], \GuzzleHttp\Psr7\stream_for($json));
+//
+//        $mock = $this->getMockBuilder(RelationshipClient::class)
+//            ->setMethods(['sendRequest'])
+//            ->getMock();
+//
+//        $mock->expects($this->any())
+//            ->method('sendRequest')
+//            ->will($this->returnValue($response));
+//
+//        $priceResponse = $mock->deleteRelationship(self::CAMPAIGN_ID);
+//        $status = $priceResponse->getStatus();
+//
+//        $this->assertEquals($jsonObj->status, $status);
+//    }
 
     public function testGetActiveRelationship()
     {

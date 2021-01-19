@@ -1,0 +1,137 @@
+{
+  "status": "OK",
+  "result":
+  {
+    "shopSkus":
+    [
+      {
+        "shopSku": "VP59136-3SK",
+        "marketSku": 105569788,
+        "name": "Санитайзер спрей с изопропиловым спиртом 70% 150мл",
+        "price": 100.50,
+        "categoryId": 91042,
+        "categoryName": "Санитайзеры",
+        "weightDimensions":
+        {
+          "length": 5.5,
+          "width": 10.5,
+          "height": 5.5,
+          "weight": 7.3
+        },
+        "hidings":
+        [
+          {
+            "type": "HIDDEN_BY_PARTNER",
+            "code": "NO_MANUFACTURER_COUNTRY_VALUE",
+            "message": "Не указана страна производства товара",
+            "comment": "Добавьте её на страницу редактирования информации о товаре или в файл каталога."
+          }
+        ],
+        "warehouses":
+        [
+          {
+            "id": 171,
+            "name": "Яндекс.Маркет Томилино",
+            "stocks":
+            [
+              {
+                "type": "FIT",
+                "count": 10
+              },
+              {
+                "type": "FREEZE",
+                "count": 4
+              },
+              {
+                "type": "AVAILABLE",
+                "count": 6
+              },
+              {
+                "type": "QUARANTINE",
+                "count": 1
+              },
+              {
+                "type": "DEFECT",
+                "count": 2
+              },
+              {
+                "type": "EXPIRED",
+                "count": 1
+              },
+              {
+                "type": "TRANSIT",
+                "count": 2
+              },
+              {
+                "type": "SUGGEST",
+                "count": 10
+              }
+            ]
+          }
+        ],
+        "storage":
+        [
+          {
+            "type": "FREE",
+            "count": 5,
+            "inclusions":
+            [
+              {
+                "type": "FREE_EXPIRE",
+                "count": 2
+              }
+            ]
+          },
+          {
+            "type": "PAID",
+            "count": 8,
+            "inclusions":
+            [
+              {
+                "type": "PAID_EXPIRE",
+                "count": 3
+              },
+              {
+                "type": "PAID_EXTRA",
+                "count": 2
+              }
+            ]
+          }
+        ],
+        "tariffs":
+        [
+          {
+            "type": "AGENCY_COMMISSION",
+            "percent": 2,
+            "amount": 100.00
+          },
+          {
+            "type": "FULFILLMENT",
+            "percent": 1,
+            "amount": 50.00
+          },
+          {
+            "type": "STORAGE",
+            "percent": 2,
+            "amount": 100.00
+          },
+          {
+            "type": "WITHDRAW",
+            "percent": 1,
+            "amount": 50.00
+          },
+          {
+            "type": "SURPLUS",
+            "percent": 1,
+            "amount": 50.00
+          },
+          {
+            "type": "FEE",
+            "percent": 2,
+            "amount": 100.00
+          }
+        ]
+      }
+    ]
+  }
+}

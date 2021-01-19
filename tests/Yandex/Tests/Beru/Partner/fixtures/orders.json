@@ -1,0 +1,88 @@
+{
+  "status": "OK",
+  "result":
+  {
+    "orders":
+    [
+      {
+        "id": 1,
+        "creationDate": "2020-02-20",
+        "statusUpdateDate": "2020-08-13Т14:31:00",
+        "status": "DELIVERY",
+        "paymentType": "POSTPAID",
+        "deliveryRegion":
+        {
+          "id": 213,
+          "name": "Москва"
+        },
+        "items":
+        [
+          {
+            "offerName": "Iphone 6s 32gb",
+            "marketSku": 100500900,
+            "shopSku": "iphone-6s-32gb-silver",
+            "count": 2,
+            "prices":
+            [
+              {
+                "type": "BUYER",
+                "costPerItem": 18990.00,
+                "total": 37980.00
+              }
+            ],
+            "warehouse":
+            {
+              "id": 171,
+              "name": "Яндекс.Маркет (Томилино)"
+            },
+            "details":
+            [
+              {
+                "itemStatus": "REJECTED",
+                "itemCount": 2,
+                "updateDate": "2020-08-09",
+                "stockType": "DEFECT"
+              }
+            ]
+          }
+        ],
+        "initialItems":
+        [
+          {
+            "offerName": "Iphone 6s 32gb",
+            "marketSku": 100500900,
+            "shopSku": "iphone-6s-32gb-silver",
+            "count": 3
+          }
+        ],
+        "payments":
+        [
+          {
+            "id": "46234",
+            "date": "2020-08-13",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 56970.00,
+            "paymentOrder":
+            {
+              "id": 99273,
+              "date": "2020-08-13"
+            }
+          }
+        ],
+        "commissions":
+        [
+          {
+            "type": "AGENCY",
+            "actual": 379.80,
+            "predicted": 379.80
+          }
+        ]
+      }
+    ],
+    "paging":
+    {
+      "nextPageToken": "XkiOjUzO"
+    }
+  }
+}

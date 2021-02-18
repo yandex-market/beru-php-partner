@@ -10,6 +10,7 @@ class Item extends Model
     protected $id;
     protected $offerId;
     protected $feedId;
+	protected $sku;
 
     /**
      * @return int
@@ -35,7 +36,15 @@ class Item extends Model
         return $this->offerId;
     }
 
-    /**
+	/**
+	 * @return int
+	 */
+	public function getSku()
+	{
+		return $this->sku;
+	}
+
+	/**
      * @return int
      */
     public function getFeedId()

@@ -1,5 +1,5 @@
 {
-  "name": "yandex-market/marketplace-php-partner",
+  "name": "xfdrer/marketplace-php-partner",
   "description": "PHP library of Partners Marketplace API.",
   "keywords":["yandex","sdk", "market", "beru"],
   "type":"library",
@@ -20,6 +20,10 @@
     {
       "name": "Vitaliia Smahlenko",
       "email": "vsmahlenko@yandex-team.ru"
+    },
+    {
+      "name": "Tim Fokin",
+      "email": "fokin@imperiatools.ru"
     }
   ],
   "autoload": {

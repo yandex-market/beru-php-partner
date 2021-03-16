@@ -60,7 +60,7 @@ class StatsClient extends Client
     public function getStatsBySkus($campaignId, array $params = [], $dbgKey = null)
     {
         $resource = 'campaigns/' . $campaignId . '/stats/skus.json';
-        $resource .= $this->addDebugKey($resource, $dbgKey);
+        $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest(
             'POST',
             $this->getServiceUrl($resource),

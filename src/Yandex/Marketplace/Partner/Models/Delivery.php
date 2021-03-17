@@ -17,10 +17,12 @@ class Delivery extends Model
     protected $region;
     protected $shipments;
     protected $deliveryServiceId;
+    protected $address;
 
     protected $mappingClasses = [
         'region' => Region::class,
         'shipments' => Shipments::class,
+        'address' => Address::class,
     ];
 
     /**
@@ -77,5 +79,13 @@ class Delivery extends Model
     public function getDeliveryServiceId()
     {
         return $this->deliveryServiceId;
+    }
+
+    /**
+     * @return Address|null
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }

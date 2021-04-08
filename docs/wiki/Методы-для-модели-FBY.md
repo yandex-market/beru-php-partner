@@ -1,5 +1,5 @@
 Ниже представлено описание и примеры запросов к API и методов, которыми они реализованы. В примерах указаны только некоторые аргументы методов. Остальные аргументы описаны в статьях о соответствующих запросах 
-[технической документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/all-methods-docpage/). Ссылки на статьи приведены в описаниях методов.
+[технической документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/all-methods.html). Ссылки на статьи приведены в описаниях методов.
 
 # Управление показом товаров
 
@@ -29,9 +29,9 @@ foreach ($hiddenOffers as $hiddenOffer) {
 
 Товары отсортированы в лексикографическом порядке по возрастанию SKU на Яндексе.
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-hidden-offers.html).
 
 ## Скрытие товаров и настройки скрытия
 
@@ -68,7 +68,7 @@ foreach ($hiddenOffers as $hiddenOffer) {
   ]);
   ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-hidden-offers.html).
 
 ## Возобновление показа товаров
 
@@ -86,7 +86,7 @@ $showOffersResponse = $hiddenOffersClient->showOffers($campaignId, [
 ]);
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/delete-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/delete-campaigns-id-hidden-offers.html).
 
 # Управление ценами
 
@@ -133,9 +133,9 @@ foreach ($recommendedPrices as $recommendedPrice) {
 
 Выходные данные содержат для каждого товара несколько рекомендованных цен, соответствующих разной частоте показов. Если на маркетплейсе Яндекс.Маркета проходит или будет проходить акция, в которой может участвовать товар, то выходные данные также содержат рекомендованную цену для участия в акции.
 
-Метод возвращает [итератор](Основные-понятия#Итераторы).
+Метод возвращает [итератор](Основные-понятия.md#Итераторы).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-prices-suggestions-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-prices-suggestions.html).
 
 ## Установка цен
 
@@ -187,7 +187,7 @@ foreach ($recommendedPrices as $recommendedPrice) {
   ]]);
   ```  
   
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-prices-updates-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-prices-updates.html).
 
 ## Список цен, установленных через API
 
@@ -211,9 +211,9 @@ foreach ($offerPrices as $offerPrice) {
 }
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-offer-prices-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-offer-prices.html).
 
 # Управление связями между товарами на маркетплейсе Яндекс.Маркета и вашими
 
@@ -255,9 +255,9 @@ foreach ($recommendedRelationships as $recommendedRelationship) {
 }
 ```
 
-Метод возвращает [итератор](Основные-понятия#Итераторы).
+Метод возвращает [итератор](Основные-понятия.md#Итераторы).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-mapping-entries-suggestions-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-mapping-entries-suggestions.html).
 
 ## Создание связей
 
@@ -296,7 +296,7 @@ $updateRelationshipResponse = $relationshipClient->updateRelationship($campaignI
 
 Перед публикацией связи проходят модерацию. Если в одной из отправленных связей найдена ошибка, ответ на запрос будет иметь HTTP-код `400 Bad Request`, и ни одна из связей не отправится на модерацию.
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-mapping-entries-updates-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-offer-mapping-entries-updates.html).
 
 ## Список связей
 
@@ -337,9 +337,9 @@ foreach ($activeRelationships as $activeRelationship) {
 }
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-offer-mapping-entries-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-offer-mapping-entries.html).
 
 # Управление поставками
 
@@ -385,7 +385,7 @@ $createShipmentResponse = $shipmentsClient->createShipment($campaignId, [
 $shipmentRequest = $createShipmentResponse->getShipmentRequest();
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-shipments-requests-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/post-campaigns-id-shipments-requests.html).
 
 ## Информация о поставках
 
@@ -407,9 +407,9 @@ for ($i = 0; $i < $requestsCount; $i++) {
 }
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests.html).
 
 ## Информация о поставке
 
@@ -436,7 +436,7 @@ foreach ($statusHistory as $statusHistoryRow) {
 }
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id.html).
 
 ## Список товаров в поставке
 
@@ -460,9 +460,9 @@ for ($i = 0; $i < $itemsCount; $i++)
 }
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-items-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-items.html).
 
 ## Скачивание акта приема-передачи
 
@@ -479,4 +479,4 @@ $downloadDocument = $shipmentsClient->downloadDocument(
 );
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-documents-id-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace/doc/dg/reference/get-campaigns-id-shipments-requests-id-documents-id.html).

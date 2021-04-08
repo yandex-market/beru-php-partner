@@ -2,8 +2,8 @@
 
 Магазинам, работающим с Яндекс.Маркетом по моделям FBY (*Fulfillment by Yandex*, продажи с фулфилментом Яндекса) и FBS (*Fulfillment by Seller*, продажи с фулфилментом магазина), Маркет предоставляет партнерский API.
 
-* Для модели [FBY](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/) API позволяет управлять ассортиментом и ценами на товары.
-* Для модели [FBS](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/concepts/about-docpage/) API позволяет управлять ассортиментом, ценами на товары и заказами, а также передавать Маркету информацию об остатках на складе.
+* Для модели [FBY](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about.html) API позволяет управлять ассортиментом и ценами на товары.
+* Для модели [FBS](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/concepts/about.html) API позволяет управлять ассортиментом, ценами на товары и заказами, а также передавать Маркету информацию об остатках на складе.
 
 Библиотека написана на языке PHP и содержит методы для работы с партнерским API. 
 
@@ -70,4 +70,4 @@ foreach ($hiddenOffers as $hiddenOffer) {
     echo "TtlInHours: " . $hiddenOffer->getTtlInHours();
 }
 ```
-Подробнее см. [Wiki](https://github.com/yandex-market/marketplace-php-partner/wiki) и документацию партнерского API для моделей работы [FBY](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/) и [FBS](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about-docpage/).   
+Подробнее см. [Wiki](https://github.com/yandex-market/marketplace-php-partner/wiki) и документацию партнерского API для моделей работы [FBY](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about.html) и [FBS](https://yandex.ru/dev/market/partner-marketplace/doc/dg/concepts/about.html).   

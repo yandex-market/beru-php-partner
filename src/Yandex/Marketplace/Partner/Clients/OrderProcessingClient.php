@@ -222,7 +222,7 @@ class OrderProcessingClient extends Client
      */
     public function getDeliveryLabelForBoxes($campaignId, $orderId, $shipmentId, $boxId, $dbgKey = null)
     {
-        $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/shipments/' . $shipmentId . '/boxes/' . $boxId . 'label.json';
+        $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/delivery/shipments/' . $shipmentId . '/boxes/' . $boxId . '/label.json';
         $resource = $this->addDebugKey($resource, $dbgKey);
         $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
         $header = $response->getHeader("Content-Type");
@@ -257,5 +257,31 @@ class OrderProcessingClient extends Client
         $decodedResponseBody = $this->getDecodedBody($response->getBody());
 
         return new GetDeliveryLabelsDataResponse($decodedResponseBody);
+    }
+
+    /**
+     * Return reception transfer act
+     *
+     * @see https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-shipments-reception-transfer-act.html
+     *
+     * @param $campaignId
+     * @return string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
+     * @throws \Yandex\Common\Exception\ForbiddenException
+     * @throws \Yandex\Common\Exception\UnauthorizedException
+     */
+    public function getReceptionTransferAct($campaignId)
+    {
+        $resource = 'campaigns/' . $campaignId . '/shipments/reception-transfer-act.json';
+        $response = $this->sendRequest('GET', $this->getServiceUrl($resource));
+        $header = $response->getHeader("Content-Type");
+        if ($header[0] == "application/pdf") {
+            return $response->getBody()->getContents();
+        }
+
+        $decodedResponseBody = $this->getDecodedBody($response->getBody());
+
+        return new PostResponse($decodedResponseBody);
     }
 }

@@ -156,7 +156,15 @@ class Client extends AbstractServiceClient
 
             if ($body) {
                 $jsonBody = json_decode($body);
-                if ($jsonBody && isset($jsonBody->error) && isset($jsonBody->error->message)) {
+				if (isset($jsonBody->errors)) {
+					$response = [];
+					foreach ($jsonBody->errors as $error) {
+						$response['errors'][] = $error->message;
+					}
+					throw new PartnerRequestException(json_encode($response), $code);
+				}
+
+				if ($jsonBody && isset($jsonBody->error) && isset($jsonBody->error->message)) {
                     $message = $jsonBody->error->message;
                 }
             }

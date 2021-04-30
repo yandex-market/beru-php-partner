@@ -54,6 +54,7 @@ class Order extends Model
     protected $taxSystem;
     protected $total;
     protected $delivery;
+    protected $buyer;
     protected $items;
     protected $notes;
     protected $subsidyTotal;
@@ -62,6 +63,7 @@ class Order extends Model
 
     protected $mappingClasses = [
         'delivery' => Delivery::class,
+        'buyer' => Buyer::class,
         'items' => ItemsOrder::class,
     ];
 
@@ -167,6 +169,14 @@ class Order extends Model
     public function getDelivery()
     {
         return $this->delivery;
+    }
+
+    /**
+     * @return Buyer
+     */
+    public function getBuyer()
+    {
+        return $this->buyer;
     }
 
     /**

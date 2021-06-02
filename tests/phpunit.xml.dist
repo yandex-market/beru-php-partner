@@ -6,7 +6,7 @@
          bootstrap="./bootstrap.php">
     <testsuites>
         <testsuite name="Library Test Suite">
-            <directory>./Yandex/Tests/Market/Partner</directory>
+            <directory>./Yandex/Tests/Marketplace/Partner</directory>
         </testsuite>
     </testsuites>
     <listeners>

@@ -26,6 +26,7 @@ class PriceClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
+        /** @var PriceClient $mock */
         $offersResp = $mock->getRecommendedPrices(self::CAMPAIGN_ID);
         $offersResult = $offersResp->getResult();
         $offers = $offersResult->getOffers();
@@ -80,31 +81,33 @@ class PriceClientTest extends TestCase
             ->method('sendRequest')
             ->will($this->returnValue($response));
 
+        /** @var PriceClient $mock */
         $priceResponse = $mock->updatePrices(self::CAMPAIGN_ID);
         $status = $priceResponse->getStatus();
 
         $this->assertEquals($jsonObj->status, $status);
     }
 
-    public function testDeletePrices()
-    {
-        $json = file_get_contents(__DIR__ . '/' . $this->fixturesFolder . '/postResponse.json');
-        $jsonObj = json_decode($json);
-        $response = new Response(200, [], \GuzzleHttp\Psr7\stream_for($json));
-
-        $mock = $this->getMockBuilder(PriceClient::class)
-            ->setMethods(['sendRequest'])
-            ->getMock();
-
-        $mock->expects($this->any())
-            ->method('sendRequest')
-            ->will($this->returnValue($response));
-
-        $priceResponse = $mock->deletePrices(self::CAMPAIGN_ID);
-        $status = $priceResponse->getStatus();
-
-        $this->assertEquals($jsonObj->status, $status);
-    }
+//    public function testDeletePrices()
+//    {
+//        $json = file_get_contents(__DIR__ . '/' . $this->fixturesFolder . '/postResponse.json');
+//        $jsonObj = json_decode($json);
+//        $response = new Response(200, [], \GuzzleHttp\Psr7\stream_for($json));
+//
+//        $mock = $this->getMockBuilder(PriceClient::class)
+//            ->setMethods(['sendRequest'])
+//            ->getMock();
+//
+//        $mock->expects($this->any())
+//            ->method('sendRequest')
+//            ->will($this->returnValue($response));
+//
+//        /** @var PriceClient $mock */
+//        $priceResponse = $mock->deletePrices(self::CAMPAIGN_ID);
+//        $status = $priceResponse->getStatus();
+//
+//        $this->assertEquals($jsonObj->status, $status);
+//    }
 
     public function testGetOffersPrices()
     {

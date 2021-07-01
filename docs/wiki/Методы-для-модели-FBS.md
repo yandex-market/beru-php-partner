@@ -1,9 +1,9 @@
 Ниже представлено описание и примеры запросов к API и методов, которыми они реализованы. В примерах указаны только некоторые аргументы методов. Остальные аргументы описаны в статьях о соответствующих запросах 
-[технической документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/all-methods-docpage/). Ссылки на статьи приведены в описаниях методов.
+[технической документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/all-methods.html). Ссылки на статьи приведены в описаниях методов.
 
 # Управление показом товаров
 
-Методы клиента `HiddenOffersClient` позволяют управлять показом товаров: скрывать и возобновлять их показ на маркетплейсе Яндекс.Маркета.
+Методы клиента `HiddenOffersClient` позволяют управлять показом товаров: скрывать и возобновлять их показ на Маркете.
 
 ```php
 $hiddenOffersClient = new \Yandex\Marketplace\Partner\Clients\HiddenOffersClient($clientId, $token);
@@ -29,15 +29,15 @@ foreach ($hiddenOffers as $hiddenOffer) {
 
 Товары отсортированы в лексикографическом порядке по возрастанию SKU на Яндексе.
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-hidden-offers.html).
 
 ## Скрытие товаров и настройки скрытия
 
 Метод `hideOffers` позволяет:
 
-* Скрыть товары магазина на маркетплейсе Яндекс.Маркета на указанное время.
+* Скрыть товары магазина на Маркете на указанное время.
 
   ```php
   // Скрываем товар
@@ -68,11 +68,11 @@ foreach ($hiddenOffers as $hiddenOffer) {
   ]);
   ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-hidden-offers.html).
 
 ## Возобновление показа товаров
 
-Метод `showOffers` возобновляет показ скрытых товаров магазина на маркетплейсе Яндекс.Маркета.
+Метод `showOffers` возобновляет показ скрытых товаров магазина на Маркете.
 
 ```php
 // Возобновляем показ товара
@@ -86,11 +86,11 @@ $showOffersResponse = $hiddenOffersClient->showOffers($campaignId, [
 ]);
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/delete-campaigns-id-hidden-offers-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/delete-campaigns-id-hidden-offers.html).
 
 # Управление ценами
 
-Методы клиента `PriceClient` позволяют магазину работать с ценами товаров, размещенных на маркетплейсе Яндекс.Маркета.
+Методы клиента `PriceClient` позволяют магазину работать с ценами товаров, размещенных на Маркете.
 
 ```php
 $priceClient = new \Yandex\Marketplace\Partner\Clients\PriceClient($clientId, $token);
@@ -98,7 +98,7 @@ $priceClient = new \Yandex\Marketplace\Partner\Clients\PriceClient($clientId, $t
 
 ## Рекомендованные цены
 
-Метод `getRecommendedPrices` возвращает рекомендованные цены на товары, которые размещаются на маркетплейсе Яндекс.Маркета.
+Метод `getRecommendedPrices` возвращает рекомендованные цены на товары, которые размещаются на Маркете.
 
 ```php
 // Получаем итератор по рекомендованным ценам
@@ -129,13 +129,13 @@ foreach ($recommendedPrices as $recommendedPrice) {
 }
 ```
 
-Рекомендации зависят от цен, установленных на товары другими партнерами. Если один товар поставляют несколько партнеров, на маркетплейсе Яндекс.Маркета сначала продается товар с более низкой ценой. Когда закончится товар по низкой цене, начнет продаваться товар по более высокой цене. Подробнее см. в разделе [Цены и рекомендации](https://yandex.ru/support/marketplace/catalog/prices.html) Справки Маркета для моделей FBY и FBS.
+Рекомендации зависят от цен, установленных на товары другими партнерами. Если один товар поставляют несколько партнеров, на Маркете сначала продается товар с более низкой ценой. Когда закончится товар по низкой цене, начнет продаваться товар по более высокой цене. Подробнее см. в разделе [Цены и рекомендации](https://yandex.ru/support/marketplace/catalog/prices.html) Справки Маркета для моделей FBY и FBS.
 
-Выходные данные содержат для каждого товара несколько рекомендованных цен, соответствующих разной частоте показов. Если на маркетплейсе Яндекс.Маркета проходит или будет проходить акция, в которой может участвовать товар, то выходные данные также содержат рекомендованную цену для участия в акции.
+Выходные данные содержат для каждого товара несколько рекомендованных цен, соответствующих разной частоте показов. Если на Маркете проходит или будет проходить акция, в которой может участвовать товар, то выходные данные также содержат рекомендованную цену для участия в акции.
 
-Метод возвращает [итератор](Основные-понятия#Итераторы).
+Метод возвращает [итератор](Основные-понятия.md#Итераторы).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-prices-suggestions-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-prices-suggestions.html).
 
 ## Установка цен
 
@@ -187,7 +187,7 @@ foreach ($recommendedPrices as $recommendedPrice) {
   ]]);
   ```  
   
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-prices-updates-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-prices-updates.html).
 
 ## Список цен, установленных через API
 
@@ -211,15 +211,15 @@ foreach ($offerPrices as $offerPrice) {
 }
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-offer-prices-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-offer-prices.html).
 
-# Управление связями между товарами на маркетплейсе Яндекс.Маркета и вашими
+# Управление связями между товарами на Маркете и вашими
 
-Ассортимент маркетплейса Маркета может отличаться от вашего. Поэтому каждому товару, который вы размещаете, должен соответствовать товар на маркетплейсе со своим идентификатором на Яндексе (SKU). Это соответствие называется связью.
+Ассортимент Маркета может отличаться от вашего. Поэтому каждому товару, который вы размещаете, должен соответствовать товар на Маркете со своим идентификатором на Яндексе (SKU). Это соответствие называется связью.
 
-Методы клиента `RelationshipClient` создают и удаляют связи между товарами на маркетплейсе Яндекс.Маркета и товарами из вашего каталога, а также возвращают рекомендации по ним.
+Методы клиента `RelationshipClient` создают и удаляют связи между товарами на Маркете и товарами из вашего каталога, а также возвращают рекомендации по ним.
 
 ```php
 $relationshipClient = new \Yandex\Marketplace\Partner\Clients\RelationshipClient($clientId, $token);
@@ -227,7 +227,7 @@ $relationshipClient = new \Yandex\Marketplace\Partner\Clients\RelationshipClient
 
 ## Рекомендованные связи
 
-Метод `getRecommendedRelationship` возвращает рекомендованные связи между товарами на маркетплейсе Яндекс.Маркета и товарами из вашего каталога.
+Метод `getRecommendedRelationship` возвращает рекомендованные связи между товарами на Маркете и товарами из вашего каталога.
 
 ```php
 // Получаем итератор по рекомендованным связям
@@ -255,13 +255,13 @@ foreach ($recommendedRelationships as $recommendedRelationship) {
 }
 ```
 
-Метод возвращает [итератор](Основные-понятия#Итераторы).
+Метод возвращает [итератор](Основные-понятия.md#Итераторы).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-mapping-entries-suggestions-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-mapping-entries-suggestions.html).
 
 ## Создание связей
 
-Метод `updateRelationship` создает связи между товарами на маркетплейсе Яндекс.Маркета и товарами из вашего каталога. В аргументах метода передаются идентификаторы товара (SKU), которые нужно связать: ваш SKU и SKU на Яндексе, а также информация о товаре. 
+Метод `updateRelationship` создает связи между товарами на Маркете и товарами из вашего каталога. В аргументах метода передаются идентификаторы товара (SKU), которые нужно связать: ваш SKU и SKU на Яндексе, а также информация о товаре. 
 
 ```php
 // Создаем связи
@@ -283,7 +283,7 @@ $updateRelationshipResponse = $relationshipClient->updateRelationship($campaignI
                 'manufacturerCountries' => ['Россия',],
                 // URL изображений или страниц с описаниями товара,
                 // обязательный параметр
-                'urls' => ['https://pokupki.market.yandex.ru/product/100345202774',],                
+                'urls' => ['https://market.yandex.ru/product/100345202774',],                
             ],
             'mapping' => [
                 // SKU на Яндексе, обязательный параметр            
@@ -296,11 +296,11 @@ $updateRelationshipResponse = $relationshipClient->updateRelationship($campaignI
 
 Перед публикацией связи проходят модерацию. Если в одной из отправленных связей найдена ошибка, ответ на запрос будет иметь HTTP-код `400 Bad Request`, и ни одна из связей не отправится на модерацию.
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-mapping-entries-updates-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-campaigns-id-offer-mapping-entries-updates.html).
 
 ## Список связей
 
-Метод `getActiveRelationship` возвращает список связей между товарами на маркетплейсе Яндекс.Маркета и товарами из вашего каталога.
+Метод `getActiveRelationship` возвращает список связей между товарами на Маркете и товарами из вашего каталога.
 
 ```php
 // Получаем объект со связями
@@ -319,27 +319,27 @@ foreach ($activeRelationships as $activeRelationship) {
     echo 'Barcodes: ';
     print_r($offer->getBarcodes());
     
-    // Печатаем информацию о статусе связи с товаром на маркетплейсе Яндекс.Маркета
+    // Печатаем информацию о статусе связи с товаром на Маркете
     $processingState = $offer->getProcessingState();
     echo 'Status: ' . $processingState->getStatus();
     
-    // Печатаем информацию о действующей связи с товаром на маркетплейсе Яндекс.Маркета
+    // Печатаем информацию о действующей связи с товаром на Маркете
     $mapping = $activeRelationship->getMapping();
     echo 'MarketSku: ' . $mapping->getMarketSku();
     echo 'CategoryId: ' . $mapping->getCategoryId();
     
     // Печатаем информацию о связи с товаром 
-    // на маркетплейсе Яндекс.Маркета, проходящей модерацию
+    // на Маркете, проходящей модерацию
     $awaitingModerationMapping = $activeRelationship->getAwaitingModerationMapping();
     // Печатаем информацию о последней связи с товаром 
-    // на маркетплейсе Яндекс.Маркета, отклоненной на модерации
+    // на Маркете, отклоненной на модерации
     $rejectedMapping = $activeRelationship->getRejectedMapping();
 }
 ```
 
-Метод возвращает результаты [постранично](Основные-понятия#Постраничный-возврат).
+Метод возвращает результаты [постранично](Основные-понятия.md#Постраничный-возврат).
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-offer-mapping-entries-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/get-campaigns-id-offer-mapping-entries.html).
 
 ## Обработка заказов
 
@@ -371,7 +371,7 @@ foreach ($items as $item) {
 }
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-cart-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-cart.html).
 
 #### Передача заказа и запрос на принятие заказа
 
@@ -390,7 +390,7 @@ foreach ($items as $item) {
 }
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-order-accept-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-order-accept.html).
 
 #### Уведомление о смене статуса заказа
 
@@ -406,7 +406,7 @@ $order = $OrderProcessingMarketplaceClient->orderStatus($request);
 $orderStatus = $order->getStatus();
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-order-status-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-order-status.html).
 
 ### Запросы от магазина к Яндекс.Маркету
 
@@ -444,7 +444,7 @@ if ($updateOrderStatusResponse->getCancelRequested()) {
 }    
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/put-campaigns-id-orders-id-status-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/put-campaigns-id-orders-id-status.html).
 
 #### Передача информации о коробках в заказе
 
@@ -561,4 +561,4 @@ print_r($stocks->getSkus());
 print_r($stocks->getWarehouseId());
 ```
 
-Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-stocks-docpage/).
+Подробнее см. в [документации API](https://yandex.ru/dev/market/partner-marketplace-cd/doc/dg/reference/post-stocks.html).

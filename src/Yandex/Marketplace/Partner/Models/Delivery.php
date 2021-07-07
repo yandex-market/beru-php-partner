@@ -20,6 +20,7 @@ class Delivery extends Model
     protected $price;
     protected $address;
     protected $dates;
+    protected $subsidy;
 
     protected $mappingClasses = [
         'region' => Region::class,
@@ -84,13 +85,13 @@ class Delivery extends Model
         return $this->deliveryServiceId;
     }
 
-    /**
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
+	/**
+	 * @return float
+	 */
+	public function getPrice()
+	{
+		return $this->price;
+	}
 
     /**
      * @return Address|null
@@ -106,5 +107,13 @@ class Delivery extends Model
     public function getDates()
     {
         return $this->dates;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSubsidy()
+    {
+        return $this->subsidy;
     }
 }

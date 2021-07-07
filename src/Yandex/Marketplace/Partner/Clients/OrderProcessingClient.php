@@ -10,6 +10,7 @@ use Yandex\Marketplace\Partner\Models\Response\GetOrderResponse;
 use Yandex\Marketplace\Partner\Models\Response\GetDeliveryServiceResponse;
 use Yandex\Marketplace\Partner\Models\Response\PostResponse;
 use Yandex\Marketplace\Partner\Models\Response\UpdateOrdersStatusesResponse;
+use Yandex\Marketplace\Partner\Models\Response\CancellationOrderResponse;
 
 class OrderProcessingClient extends Client
 {
@@ -284,4 +285,35 @@ class OrderProcessingClient extends Client
 
         return new PostResponse($decodedResponseBody);
     }
+
+    /**
+     * Accepts an order cancellation request
+     *
+     * @param $campaignId
+	 * @param $orderId
+	 * @param boolean $accept
+     * @return string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Yandex\Marketplace\Partner\Exception\PartnerRequestException
+     * @throws \Yandex\Common\Exception\ForbiddenException
+     * @throws \Yandex\Common\Exception\UnauthorizedException
+     */
+    public function cancellationAccept($campaignId, $orderId, $accept = true)
+    {
+        $resource = 'campaigns/' . $campaignId . '/orders/'.$orderId.'/cancellation/accept.json';
+    	$params = ['accepted' => (bool) $accept];
+		if(!$accept) {
+			$params['reason'] = 'ORDER_DELIVERED';
+		}
+		$response = $this->sendRequest(
+			'PUT',
+			$this->getServiceUrl($resource),
+			['json' => $params]
+		);
+        $decodedResponseBody = $this->getDecodedBody($response->getBody());
+        $cancellationResponse = new CancellationOrderResponse($decodedResponseBody);
+
+        return new PostResponse($cancellationResponse);
+    }
+
 }

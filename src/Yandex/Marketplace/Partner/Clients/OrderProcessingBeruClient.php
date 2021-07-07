@@ -4,6 +4,7 @@ namespace Yandex\Marketplace\Partner\Clients;
 
 use Yandex\Marketplace\Partner\Models\Response\GetCartResponse;
 use Yandex\Marketplace\Partner\Models\Response\AcceptOrderResponse;
+use Yandex\Marketplace\Partner\Models\Response\CancellationOrderResponse;
 
 class OrderProcessingBeruClient extends Client
 {
@@ -54,6 +55,22 @@ class OrderProcessingBeruClient extends Client
 
         return $acceptOrderResponsenew->getOrder();
     }
+
+	/**
+	 * Sends an order cancellation request to the store
+	 *
+	 * @see https://yandex.ru/dev/market/partner-dsbs/doc/dg/reference/post-order-cancellation-notify.html
+	 *
+	 * @param $response
+	 * @return \Yandex\Marketplace\Partner\Models\Order
+	 */
+	public function cancellationNotify($response)
+	{
+		$decodedResponseBody = $this->getDecodedBody($response);
+		$cancellationOrderResponse = new CancellationOrderResponse($decodedResponseBody);
+
+		return $cancellationOrderResponse->getOrder();
+	}
 
     /**
      * @param $response

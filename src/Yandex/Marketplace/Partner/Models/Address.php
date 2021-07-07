@@ -20,6 +20,8 @@ class Address extends Model
 	protected $apartment;
 	protected $phone;
 	protected $recipient;
+	protected $lat;
+	protected $lon;
 
 
 	/**
@@ -124,6 +126,22 @@ class Address extends Model
 	public function getRecipient()
 	{
 		return $this->recipient;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLon()
+	{
+		return $this->lon;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLat()
+	{
+		return $this->lat;
 	}
 
 
